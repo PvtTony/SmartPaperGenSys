@@ -1,8 +1,10 @@
 package me.songt.smartpaper.service;
 
+import me.songt.smartpaper.po.KnowledgePoint;
 import me.songt.smartpaper.vo.KnowledgePointTree;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -18,4 +20,6 @@ public interface KnowledgePointService
     List<KnowledgePointTree> getAllChildPointTree(int parentPointId);
 
     List<Integer> getAllChildPointId(int parentPointId);
+
+    List<KnowledgePointTree> findChildPointTree(Collection<KnowledgePoint> source);
 }
