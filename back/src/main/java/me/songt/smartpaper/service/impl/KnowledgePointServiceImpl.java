@@ -50,11 +50,14 @@ public class KnowledgePointServiceImpl implements KnowledgePointService
         LinkedList<KnowledgePointTree> pointTree = new LinkedList<>();
         for (KnowledgePoint point : source)
         {
+            //转换数据到展示用到类
             KnowledgePointTree treeNode = new KnowledgePointTree(point.getPointId(), point.getPointName(),
                     point.getPointSubjectId(), point.getParentPointId(), point.getPointDepth());
+            //检查子集
             Collection<KnowledgePoint> childs = pointRepository.findByparentPointId(point.getPointId());
             if (childs.size() != 0)
             {
+                //递归查询，把结果加入到容器
                 treeNode.setChildTree(findChildPointTree(childs));
             }
             pointTree.add(treeNode);
@@ -67,10 +70,13 @@ public class KnowledgePointServiceImpl implements KnowledgePointService
         ArrayList<Integer> childPointId = new ArrayList<>();
         for (KnowledgePoint point : source)
         {
+            //将Id加入到容器类中
             childPointId.add(point.getPointId());
+            //检查子集
             Collection<KnowledgePoint> childs = pointRepository.findByparentPointId(point.getPointId());
             if (childs.size() != 0)
             {
+                //递归查询，把结果加入到容器
                 childPointId.addAll(findChildPointIds(childs));
             }
         }

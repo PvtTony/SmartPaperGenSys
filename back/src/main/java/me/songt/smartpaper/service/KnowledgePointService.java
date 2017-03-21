@@ -13,13 +13,21 @@ import java.util.List;
 @Service
 public interface KnowledgePointService
 {
+    //获取整体知识点树
     List<KnowledgePointTree> getAllPointTree();
 
+    //获取所有知识点ID
     List<Integer> getAllPointId();
 
+    //获取指定id下所有知识点树
     List<KnowledgePointTree> getAllChildPointTree(int parentPointId);
 
+    //获取指定id下所有知识点Id
     List<Integer> getAllChildPointId(int parentPointId);
 
+    //递归查询方法：获取树
     List<KnowledgePointTree> findChildPointTree(Collection<KnowledgePoint> source);
+
+    //递归查询方法：获取Id
+    List<Integer> findChildPointIds(Collection<KnowledgePoint> source);
 }
