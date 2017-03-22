@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SmartpapergensysApplication
+public class SmartPaperGenSysApplication
 {
 
     public static void main(String[] args)
     {
-        SpringApplication.run(SmartpapergensysApplication.class, args);
+        SpringApplication.run(SmartPaperGenSysApplication.class, args);
     }
 }
