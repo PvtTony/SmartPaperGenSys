@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9a9e311-f22f-45cc-aa1f-cdb42fb3bc4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/mvnw" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/mvnw.cmd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/SmartpapergensysApplication.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/SmartpapergensysApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/test/java/me/songt/smartpaper/SmartpapergensysApplicationTests.java" afterPath="$PROJECT_DIR$/back/src/test/java/me/songt/smartpaper/SmartpapergensysApplicationTests.java" />
-    </list>
+    <list default="true" id="f9a9e311-f22f-45cc-aa1f-cdb42fb3bc4c" name="Default" comment="" />
     <ignored path="SmartPaperGenSys.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -189,6 +182,10 @@
               <option name="myItemId" value="smartpaper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartpapergensysApplication.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -218,10 +215,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="smartpaper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartpapergensysApplication.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -523,15 +516,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1490196753244</updated>
-      <workItem from="1490196754511" duration="807000" />
+      <workItem from="1490196754511" duration="1099000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="807000" />
+    <option name="totallyTimeSpent" value="1099000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="426" y="22" width="801" height="706" extended-state="1" />
+    <frame x="426" y="22" width="801" height="706" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
