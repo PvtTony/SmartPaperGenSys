@@ -8,6 +8,7 @@ import me.songt.smartpaper.po.KnowledgePoint;
 import me.songt.smartpaper.service.KnowledgePointService;
 import me.songt.smartpaper.vo.knowledgePoint.KnowledgePointTree;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/smartpaper/points")
 public class KnowledgePointController {
+    @Qualifier("knowledgePointServiceImpl")
     @Autowired
     private KnowledgePointService kpService;
 
