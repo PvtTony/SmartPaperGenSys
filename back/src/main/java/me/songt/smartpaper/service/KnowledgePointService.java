@@ -1,18 +1,26 @@
 package me.songt.smartpaper.service;
 
 import me.songt.smartpaper.po.KnowledgePoint;
-import me.songt.smartpaper.vo.KnowledgePointTree;
+import me.songt.smartpaper.vo.knowledgePoint.KnowledgePointTree;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by tony on 2017/3/19.
+ * Created by Sarah on 2017/3/27.
  */
 @Service
-public interface KnowledgePointService
-{
+public interface KnowledgePointService {
+
+    //添加知识点
+    Map<String,Object> addPoint(KnowledgePoint point);
+    //修改知识点
+    Map<String,Object> updatePoint(int id,String pointName);
+    //删除知识点
+    Map<String,Object> deletePoint(Integer[] pointIds);
+
     //获取整体知识点树
     List<KnowledgePointTree> getAllPointTree();
 
