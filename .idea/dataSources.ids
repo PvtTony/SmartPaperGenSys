@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - smartclass@songt.me" uuid="5fa4b466-d03f-42ac-91e4-732bc95a7a57">
+    <database-info product="MySQL" version="5.6.33-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="smartclass"/>
+      <table id="2" parent="1" name="class"/>
+      <table id="3" parent="1" name="difficulty"/>
+      <table id="4" parent="1" name="exam"/>
+      <table id="5" parent="1" name="exam_person"/>
+      <table id="6" parent="1" name="exam_result"/>
+      <table id="7" parent="1" name="grade"/>
+      <table id="8" parent="1" name="knowledge_point"/>
+      <table id="9" parent="1" name="paper"/>
+      <table id="10" parent="1" name="paper_question"/>
+      <table id="11" parent="1" name="paper_question_type"/>
+      <table id="12" parent="1" name="question"/>
+      <table id="13" parent="1" name="question_fav"/>
+      <table id="14" parent="1" name="question_type"/>
+      <table id="15" parent="1" name="student"/>
+      <table id="16" parent="1" name="subject"/>
+      <table id="17" parent="1" name="teacher"/>
+      <table id="18" parent="1" name="teacher_class"/>
+      <table id="19" parent="1" name="user"/>
+      <table id="20" parent="1" name="user_role"/>
+      <table id="21" parent="1" name="wrong_answer"/>
+      <column id="22" parent="2" name="class_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="23" parent="2" name="class_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="24" parent="2" name="grade_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="25" parent="2" name="PRIMARY">
+        <columns>class_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="26" parent="3" name="difficulty_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="27" parent="3" name="difficulty_coef">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="28" parent="3" name="difficulty_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <key id="29" parent="3" name="PRIMARY">
+        <columns>difficulty_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="30" parent="4" name="exam_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="31" parent="4" name="exam_endtime">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="32" parent="4" name="exam_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="33" parent="4" name="exam_paper_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="34" parent="4" name="exam_start_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <key id="35" parent="4" name="PRIMARY">
+        <columns>exam_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="36" parent="5" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="37" parent="5" name="exam_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="38" parent="5" name="exam_student_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="39" parent="5" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="40" parent="6" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="41" parent="6" name="paper_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="42" parent="6" name="question_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="43" parent="6" name="question_is_correct">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="44" parent="6" name="student_answer">
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="45" parent="6" name="student_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="46" parent="6" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="47" parent="7" name="grade_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="48" parent="7" name="grade_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <key id="49" parent="7" name="PRIMARY">
+        <columns>grade_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="50" parent="8" name="point_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="51" parent="8" name="parent_point_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="52" parent="8" name="point_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="53" parent="8" name="point_subject_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="54" parent="8" name="PRIMARY">
+        <columns>point_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="55" parent="9" name="paper_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="56" parent="9" name="paper_is_share">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="57" parent="9" name="paper_score">
+        <mandatory>1</mandatory>
+        <data-type>double(11)</data-type>
+      </column>
+      <column id="58" parent="9" name="paper_subject_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="59" parent="9" name="paper_title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="60" parent="9" name="paper_user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="61" parent="9" name="paper_generate_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <key id="62" parent="9" name="PRIMARY">
+        <columns>paper_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="63" parent="10" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="64" parent="10" name="paper_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="65" parent="10" name="paper_question_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="66" parent="10" name="paper_score">
+        <mandatory>1</mandatory>
+        <data-type>double(11)</data-type>
+      </column>
+      <key id="67" parent="10" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="68" parent="11" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="69" parent="11" name="paper_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="70" parent="11" name="paper_score">
+        <mandatory>1</mandatory>
+        <data-type>double(11)</data-type>
+      </column>
+      <column id="71" parent="11" name="paper_type_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="72" parent="11" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="73" parent="12" name="question_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="74" parent="12" name="question_content">
+        <data-type>text</data-type>
+      </column>
+      <column id="75" parent="12" name="question_attach_url">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="76" parent="12" name="question_option">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="77" parent="12" name="question_answer">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="78" parent="12" name="question_type_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="79" parent="12" name="question_difficulty_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="80" parent="12" name="question_option_count">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="81" parent="12" name="question_solution">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="82" parent="12" name="question_subject_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="83" parent="12" name="question_knowledge_point_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="84" parent="12" name="PRIMARY">
+        <columns>question_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="85" parent="13" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="86" parent="13" name="question_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="87" parent="13" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="88" parent="13" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="89" parent="14" name="type_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="90" parent="14" name="type_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="91" parent="14" name="subject_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="92" parent="14" name="PRIMARY">
+        <columns>type_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="93" parent="15" name="student_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="94" parent="15" name="student_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="95" parent="15" name="student_gender">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="96" parent="15" name="student_age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="97" parent="15" name="student_class_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="98" parent="15" name="student_user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="99" parent="15" name="PRIMARY">
+        <columns>student_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="100" parent="16" name="subject_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="101" parent="16" name="subject_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="102" parent="16" name="PRIMARY">
+        <columns>subject_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="103" parent="17" name="teacher_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="104" parent="17" name="teacher_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="105" parent="17" name="teacher_gender">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="106" parent="17" name="teacher_age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="107" parent="17" name="teacher_subject_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="108" parent="17" name="teacher_user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="109" parent="17" name="PRIMARY">
+        <columns>teacher_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="110" parent="18" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="111" parent="18" name="teacher_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="112" parent="18" name="class_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="113" parent="18" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="114" parent="19" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="115" parent="19" name="user_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="116" parent="19" name="user_password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="117" parent="19" name="user_role_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="118" parent="19" name="PRIMARY">
+        <columns>user_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="119" parent="20" name="role_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="120" parent="20" name="role_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <key id="121" parent="20" name="PRIMARY">
+        <columns>role_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="122" parent="21" name="record_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="123" parent="21" name="question_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="124" parent="21" name="student_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="125" parent="21" name="question_wrong_answer">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <key id="126" parent="21" name="PRIMARY">
+        <columns>record_id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

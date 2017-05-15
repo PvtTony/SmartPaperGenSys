@@ -1,0 +1,468 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(date 1494849535000)
++++ .idea/workspace.xml	(revision )
+@@ -2,68 +2,7 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="f9a9e311-f22f-45cc-aa1f-cdb42fb3bc4c" name="Default" comment="">
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_2_2.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_3.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_3.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_9.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_0_0_CR1.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_23_0_RELEASE.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/Swagger2.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/controller/KnowledgePointController.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/controller/PaperController.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/controller/QuestionController.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperEntity.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperQuestionEntity.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperQuestionTypeEntity.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperTypeEntity.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/PaperService.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/QuestionService.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/impl/PaperServiceImpl.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/impl/QuestionServiceImpl.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/QuestionUtil.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/generationAlgorithm/GA.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/generationAlgorithm/GeneratePaper.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/generationAlgorithm/Global.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/generationAlgorithm/Individual.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/generationAlgorithm/Population.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/util/generationAlgorithm/RuleBean.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/knowledgePoint/KnowledgePointTree.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/paper/Paper.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/paper/PaperQuestion.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/paper/PaperQuestionType.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/question/OptionSolution.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/question/Question.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/back/src/main/resources/hibernateConfig.xml" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/Paper.java" afterPath="" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperQuestion.java" afterPath="" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperQuestionType.java" afterPath="" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/vo/KnowledgePointTree.java" afterPath="" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartPaperGenSys.iml" afterPath="$PROJECT_DIR$/SmartPaperGenSys.iml" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/KnowledgePoint.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/KnowledgePoint.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/KnowledgePointRepository.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/KnowledgePointRepository.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/PaperQuestionRepository.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/PaperQuestionRepository.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/PaperQuestionTypeRepository.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/PaperQuestionTypeRepository.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/PaperRepository.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/PaperRepository.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/QuestionRepository.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/QuestionRepository.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/KnowledgePointService.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/KnowledgePointService.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/impl/KnowledgePointServiceImpl.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/service/impl/KnowledgePointServiceImpl.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" />
+-      <change type="MOVED" beforePath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/Question.java" afterPath="$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/QuestionEntity.java" />
+-      <change type="MOVED" beforePath="$PROJECT_DIR$/back/src/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+     </list>
+     <ignored path="SmartPaperGenSys.iws" />
+     <ignored path=".idea/workspace.xml" />
+@@ -127,7 +66,7 @@
+       <file leaf-file-name="Swagger2.java" pinned="false" current-in-tab="true">
+         <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/Swagger2.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="202">
++            <state relative-caret-position="395">
+               <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+               <folding />
+             </state>
+@@ -314,252 +253,6 @@
+               <option name="myItemType" value="" />
+             </PATH_ELEMENT>
+           </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="vo">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="vo">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="paper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="util">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="util">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="generationAlgorithm">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="po">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="SmartPaperGenSys">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="back/src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="main">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="java">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="me/songt/smartpaper">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="controller">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+         </subPane>
+       </pane>
+       <pane id="PackagesPane" />
+@@ -901,12 +594,12 @@
+       <workItem from="1494471993248" duration="27546000" />
+       <workItem from="1494567987537" duration="7769000" />
+       <workItem from="1494644568734" duration="593000" />
+-      <workItem from="1494834080845" duration="10024000" />
++      <workItem from="1494834080845" duration="10346000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TimeTrackingManager">
+-    <option name="totallyTimeSpent" value="194108000" />
++    <option name="totallyTimeSpent" value="194430000" />
+   </component>
+   <component name="TodoView" selected-index="3">
+     <todo-panel id="selected-file">
+@@ -919,17 +612,17 @@
+   </component>
+   <component name="ToolWindowManager">
+     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+-    <editor active="true" />
++    <editor active="false" />
+     <layout>
+       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
++      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37315875" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
+       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45826513" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
++      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
++      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45826513" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+@@ -937,7 +630,7 @@
+       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19288956" sideWeight="0.5106383" order="5" side_tool="true" content_ui="tabs" />
+       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19288956" sideWeight="0.4893617" order="0" side_tool="false" content_ui="combo" />
+-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
++      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19969743" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.4942717" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+@@ -951,37 +644,6 @@
+       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18494272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+     </layout>
+-    <layout-to-restore>
+-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37315875" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
+-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19969743" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.4942717" order="1" side_tool="false" content_ui="tabs" />
+-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43217665" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45826513" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+-      <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19288956" sideWeight="0.5106383" order="5" side_tool="true" content_ui="tabs" />
+-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19288956" sideWeight="0.4893617" order="0" side_tool="false" content_ui="combo" />
+-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18494272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+-    </layout-to-restore>
+   </component>
+   <component name="Vcs.Log.UiProperties">
+     <option name="RECENTLY_FILTERED_USER_GROUPS">
+@@ -1005,7 +667,6 @@
+     <option name="FILTER_TARGETS" value="false" />
+   </component>
+   <component name="editorHistoryManager">
+-    <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/PaperQuestion.java" />
+     <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/po/Paper.java" />
+     <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/repository/KnowledgePointRepository.java">
+       <provider selected="true" editor-type-id="text-editor">
+@@ -1349,6 +1010,14 @@
+         </state>
+       </provider>
+     </entry>
++    <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/controller/KnowledgePointController.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="34">
++          <caret line="19" column="41" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="43" />
++          <folding />
++        </state>
++      </provider>
++    </entry>
+     <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/controller/PaperController.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="803">
+@@ -1357,17 +1026,17 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/controller/KnowledgePointController.java">
++    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="34">
+-          <caret line="19" column="41" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="43" />
++        <state relative-caret-position="-22958">
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+           <folding />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/back/src/main/java/me/songt/smartpaper/Swagger2.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="202">
++        <state relative-caret-position="395">
+           <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+           <folding />
+         </state>
+\ No newline at end of file
