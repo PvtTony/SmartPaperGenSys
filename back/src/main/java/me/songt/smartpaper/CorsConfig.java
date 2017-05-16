@@ -1,4 +1,4 @@
-package me.songt.smartpaper.config;
+package me.songt.smartpaper;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

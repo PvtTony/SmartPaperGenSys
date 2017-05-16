@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by Sarah on 2017/3/28.
  */
 @Entity
-@Table(name = "knowledge_point", schema = "smartclass")
+@Table(name = "knowledge_point")
 public class KnowledgePoint {
     private int pointId;
     private int parentPointId;
