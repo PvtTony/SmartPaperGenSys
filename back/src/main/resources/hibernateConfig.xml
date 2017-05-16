@@ -11,6 +11,7 @@
     <mapping class="me.songt.smartpaper.po.PaperEntity"/>
     <mapping class="me.songt.smartpaper.po.PaperQuestionEntity"/>
     <mapping class="me.songt.smartpaper.po.PaperQuestionTypeEntity"/>
+    <mapping class="me.songt.smartpaper.po.Difficulty"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
