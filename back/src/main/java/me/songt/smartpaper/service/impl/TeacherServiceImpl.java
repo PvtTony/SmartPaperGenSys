@@ -34,6 +34,7 @@ public class TeacherServiceImpl implements TeacherService
         if (teacher != null)
         {
             info = new TeacherInfo();
+            info.setTeacherName(teacher.getTeacherName());
             info.setTeacherId(teacher.getTeacherId());
             info.setTeacherAge(teacher.getTeacherAge());
             info.setTeacherGender(teacher.getTeacherGender());

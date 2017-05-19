@@ -83,6 +83,7 @@ public class ClazzServiceImpl implements ClazzService
                 info.setClassName(clazz.getClassName());
                 info.setClassId(clazz.getClassId());
                 info.setGrade(gradeRepository.findOne(clazz.getGradeId()));
+                infoList.add(info);
             }
         }
         return infoList;

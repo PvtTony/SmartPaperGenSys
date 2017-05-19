@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by yst on 2017/5/19.
  */
-@RestController("/smartpaper/class")
+@RestController
 public class ClassController
 {
 
@@ -21,19 +21,19 @@ public class ClassController
     @Autowired
     private ClazzService clazzService;
 
-    @GetMapping("/teacher/{teacherId}")
+    @GetMapping("/smartpaper/class/teacher/{teacherId}")
     public List<ClassInfo> findClassListByTeacherId(@PathVariable("teacherId") int teacherId)
     {
         return clazzService.findClassListByTeacherId(teacherId);
     }
 
-    @GetMapping
+    @GetMapping("/smartpaper/class")
     public ClassInfo findClassByClassId(@RequestParam int classId)
     {
         return clazzService.findClassByClassId(classId);
     }
 
-    @GetMapping("/grade/{gradeId}")
+    @GetMapping("/smartpaper/class/grade/{gradeId}")
     public List<ClassInfo> findClassByGradeId(@PathVariable("gradeId") int gradeId)
     {
         return clazzService.findClassByGradeId(gradeId);

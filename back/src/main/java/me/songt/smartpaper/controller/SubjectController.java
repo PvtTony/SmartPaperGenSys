@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by yst on 2017/5/19.
  */
-@RestController("/smartpaper/subject")
+@RestController
 public class SubjectController
 {
 
@@ -19,7 +19,7 @@ public class SubjectController
     @Autowired
     private SubjectService subjectService;
 
-    @GetMapping("/{subjectId}")
+    @GetMapping("/smartpaper/subject/{subjectId}")
     public Subject findBySubjectId(@PathVariable("subjectId") int subjectId)
     {
         return subjectService.findBySubjectId(subjectId);

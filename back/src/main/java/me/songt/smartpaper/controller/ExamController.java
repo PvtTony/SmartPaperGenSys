@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by yst on 2017/5/17.
  */
-@RestController("/smartpaper/exam")
+@RestController
 public class ExamController
 {
 
@@ -21,7 +21,7 @@ public class ExamController
     private ExamService examService;
 
 
-    @GetMapping("/studentId/{studentId}")
+    @GetMapping("/smartpaper/exam/studentId/{studentId}")
     public List<Exam> findExamByStudentId(@PathVariable("studentId") int studentId,
                                           @RequestParam(defaultValue = "1") int pageIndex,
                                           @RequestParam(defaultValue = "10") int pageSize,
@@ -40,7 +40,7 @@ public class ExamController
         return examService.addExam(examName, startTime, endTime, paperId);
     }
 
-    @PutMapping("/{examId}")
+    @PutMapping("/smartpaper/exam/{examId}")
     public Exam modifyExam(@PathVariable("examId") int examId,
                            @RequestParam String examName,
                            @RequestParam long startTime,
@@ -50,32 +50,32 @@ public class ExamController
         return examService.modifyExam(examId, examName, startTime, endTime, paperId);
     }
 
-    @GetMapping("/{examId}")
+    @GetMapping("/smartpaper/exam/{examId}")
     public Exam getExamById(@PathVariable("examId") int examId)
     {
         return examService.getExamById(examId);
     }
 
-    @DeleteMapping("/{examId}")
+    @DeleteMapping("/smartpaper/exam/{examId}")
     public void removeExamById(@PathVariable int examId)
     {
         examService.removeExamById(examId);
 //        return "ok";
     }
 
-    @PostMapping("/{examId}/student")
+    @PostMapping("/smartpaper/exam/{examId}/student")
     public void addExamPerson(@PathVariable("examId") int examId,@RequestParam int studentId)
     {
         examService.addExamPerson(examId, studentId);
     }
 
-    @GetMapping("/{examId}/student")
+    @GetMapping("/smartpaper/exam/{examId}/student")
     public List<Student> getExamPersonList(@PathVariable("examId") int examId)
     {
         return examService.getExamPersonList(examId);
     }
 
-    @DeleteMapping("/{examId}/student/{studentId}")
+    @DeleteMapping("/smartpaper/exam/{examId}/student/{studentId}")
     public void removeExamPerson(@PathVariable("examId") int examId,
                                  @PathVariable("studentId") int studentId)
     {
