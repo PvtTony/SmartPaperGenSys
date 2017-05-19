@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import me.songt.smartpaper.po.QuestionEntity;
+import me.songt.smartpaper.repository.QuestionRepository;
 import me.songt.smartpaper.service.QuestionService;
 import me.songt.smartpaper.vo.question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ import java.util.Map;
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private QuestionRepository questionRepository;
 
     //获取所有试题
     @ApiOperation(value="获取所有试题")
@@ -167,26 +170,44 @@ public class QuestionController {
         return questionService.findBySubjectIdAndDifficultyIdAndTypeId(subjectId,difficultyId,typeId,pageable);
     }
 
+//    //根据科目id、知识点、难度系数、题目类型查找试题
+//    @ApiOperation(value="根据科目、知识点、难度系数、题目类型筛选试题")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "subjectId",value ="科目id",required = true,dataType = "Integer",paramType = "path"),
+//            @ApiImplicitParam(name = "pointId",value ="知识点id",required = true,dataType = "Integer",paramType = "path"),
+//            @ApiImplicitParam(name = "difficultyId",value ="难度系数id",required = true,dataType = "Integer",paramType = "path"),
+//            @ApiImplicitParam(name = "typeId",value ="题目类型id",required = true,dataType = "Integer",paramType = "path"),
+//            @ApiImplicitParam(name = "page", value = "第几页", required = false, dataType = "Integer",paramType = "query",defaultValue = "0"),
+//            @ApiImplicitParam(name = "size", value = "每一页的大小", required = false, dataType = "Integer",paramType = "query",defaultValue = "15")
+//    })
+//    @RequestMapping(value = "/subjects/{subjectId}/points/{pointId}/difficulties/{difficultyId}/types/{typeId}",method = RequestMethod.GET)
+//    public Page<Question> findBySubjectIdAndPointIdAndDifficultyIdAndTypeId(@PathVariable(value = "subjectId") Integer subjectId,
+//                                                                            @PathVariable(value = "pointId") Integer pointId,
+//                                                                            @PathVariable(value = "difficultyId") Integer difficultyId,
+//                                                                            @PathVariable(value = "typeId")Integer typeId,
+//                                                                            @RequestParam(value = "page", defaultValue = "0") Integer page,
+//                                                                            @RequestParam(value = "size", defaultValue = "15")Integer size){
+//        Sort sort = new Sort(Sort.Direction.DESC,"questionId"); //通过id逆序排列
+//        Pageable pageable = new PageRequest(page,size,sort);
+//        return questionService.findBySubjectIdAndPointIdAndDifficultyIdAndTypeId(subjectId,pointId,difficultyId,typeId,pageable);
+//    }
+
     //根据科目id、知识点、难度系数、题目类型查找试题
-    @ApiOperation(value="根据科目、难度系数、题目类型筛选试题")
+    @ApiOperation(value="根据科目、知识点、难度系数、题目类型筛选试题")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "subjectId",value ="科目id",required = true,dataType = "Integer",paramType = "path"),
             @ApiImplicitParam(name = "pointId",value ="知识点id",required = true,dataType = "Integer",paramType = "path"),
             @ApiImplicitParam(name = "difficultyId",value ="难度系数id",required = true,dataType = "Integer",paramType = "path"),
             @ApiImplicitParam(name = "typeId",value ="题目类型id",required = true,dataType = "Integer",paramType = "path"),
-            @ApiImplicitParam(name = "page", value = "第几页", required = false, dataType = "Integer",paramType = "query",defaultValue = "0"),
-            @ApiImplicitParam(name = "size", value = "每一页的大小", required = false, dataType = "Integer",paramType = "query",defaultValue = "15")
     })
     @RequestMapping(value = "/subjects/{subjectId}/points/{pointId}/difficulties/{difficultyId}/types/{typeId}",method = RequestMethod.GET)
-    public Page<Question> findBySubjectIdAndPointIdAndDifficultyIdAndTypeId(@PathVariable(value = "subjectId") Integer subjectId,
+    public List<QuestionEntity> findBySubjectIdAndPointIdAndDifficultyIdAndTypeId(@PathVariable(value = "subjectId") Integer subjectId,
                                                                             @PathVariable(value = "pointId") Integer pointId,
                                                                             @PathVariable(value = "difficultyId") Integer difficultyId,
-                                                                            @PathVariable(value = "typeId")Integer typeId,
-                                                                            @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                                            @RequestParam(value = "size", defaultValue = "15")Integer size){
-        Sort sort = new Sort(Sort.Direction.DESC,"questionId"); //通过id逆序排列
-        Pageable pageable = new PageRequest(page,size,sort);
-        return questionService.findBySubjectIdAndPointIdAndDifficultyIdAndTypeId(subjectId,pointId,difficultyId,typeId,pageable);
+                                                                            @PathVariable(value = "typeId")Integer typeId
+                                                                           ){
+
+        return questionRepository.findByQuestionSubjectIdAndQuestionKnowledgePointIdAndQuestionDifficultyIdAndQuestionTypeId(subjectId,pointId,difficultyId,typeId);
     }
 
     //添加题目
