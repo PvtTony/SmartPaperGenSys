@@ -15,4 +15,8 @@ import java.util.List;
 public interface ExamPersonRepository extends CrudRepository<ExamPerson, Integer>
 {
     List<ExamPerson> findByexamStudentId(int studentId);
+
+    List<ExamPerson> findByexamId(int examId);
+
+    ExamPerson findByExamIdEqualsAndExamStudentIdEquals(int examId, int studentId);
 }
