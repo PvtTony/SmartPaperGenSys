@@ -1,5 +1,7 @@
 package me.songt.smartpaper.controller;
 
+import me.songt.smartpaper.po.Grade;
+import me.songt.smartpaper.repository.GradeRepository;
 import me.songt.smartpaper.service.ClazzService;
 import me.songt.smartpaper.vo.ClassInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class ClassController
     @Autowired
     private ClazzService clazzService;
 
+    @Autowired
+    private GradeRepository gradeRepository;
+
     @GetMapping("/smartpaper/class/teacher/{teacherId}")
     public List<ClassInfo> findClassListByTeacherId(@PathVariable("teacherId") int teacherId)
     {
@@ -37,5 +42,11 @@ public class ClassController
     public List<ClassInfo> findClassByGradeId(@PathVariable("gradeId") int gradeId)
     {
         return clazzService.findClassByGradeId(gradeId);
+    }
+
+    @GetMapping("/smartpaper/class/grades")
+    public List<Grade> findAllGrade()
+    {
+        return (List<Grade>) gradeRepository.findAll();
     }
 }
