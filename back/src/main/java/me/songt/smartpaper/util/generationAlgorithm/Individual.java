@@ -77,7 +77,7 @@ public class Individual {
      */
     public void setAdaptationDegree(RuleBean rule, double f1, double f2) {
         if (adaptationDegree==0){
-            adaptationDegree = 1 -getKPCoverage()*f1 - Math.abs(DIFFICULTY_COEF[rule.getDifficulty()]-getDifficulty())*f2;
+            adaptationDegree = 1 -(1-getKPCoverage())*f1 - Math.abs(DIFFICULTY_COEF[rule.getDifficulty()]-getDifficulty())*f2;
         }
     }
 

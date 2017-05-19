@@ -49,7 +49,7 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
     @Override
     public List<KnowledgePointTree> getAllPointTree()
     {
-        return findChildPointTree((Collection<KnowledgePoint>) kpRepository.findAll());
+        return findChildPointTree((Collection<KnowledgePoint>) kpRepository.findByParentPointId(0));
     }
 
     @Override
