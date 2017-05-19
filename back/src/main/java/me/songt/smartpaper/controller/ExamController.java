@@ -31,7 +31,7 @@ public class ExamController
         return examService.getExamByStudentId(studentId, pageIndex, pageSize, sortField, desc == 1);
     }
 
-    @PostMapping
+    @PostMapping("/smartpaper/exam")
     public Exam addExam(@RequestParam String examName,
                         @RequestParam long startTime,
                         @RequestParam long endTime,
