@@ -27,8 +27,8 @@ public class ClassController
         return clazzService.findClassListByTeacherId(teacherId);
     }
 
-    @GetMapping("/smartpaper/class")
-    public ClassInfo findClassByClassId(@RequestParam int classId)
+    @GetMapping("/smartpaper/class/{classId}")
+    public ClassInfo findClassByClassId(@PathVariable("classId") int classId)
     {
         return clazzService.findClassByClassId(classId);
     }
