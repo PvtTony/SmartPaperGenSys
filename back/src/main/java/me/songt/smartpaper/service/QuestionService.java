@@ -43,10 +43,8 @@ public interface QuestionService {
     //删除题目
     Map<String,Object> deleteQuestion(int questionId);
 
-    //根据科目、题型、知识点集合查找试题
-    QuestionEntity[] getQuestionArray(int typeId,List<Integer> pointIds,int subjectId);
-    //根据科目id、难度系数、题目类型查找试题（不包含变异题目）
-    List<QuestionEntity> getQuestionListDifAndType(QuestionEntity question);
+    //根据科目、题型集合查找试题
+    QuestionEntity[] getQuestionArray(int typeId, List<Integer>pointIds,int subjectId);
 
     //查看试题
     Question query(int questionId);

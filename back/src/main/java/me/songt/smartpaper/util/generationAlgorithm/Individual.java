@@ -1,7 +1,6 @@
 package me.songt.smartpaper.util.generationAlgorithm;
 
 import me.songt.smartpaper.po.QuestionEntity;
-import me.songt.smartpaper.vo.question.Question;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,6 +22,14 @@ public class Individual {
 
     private static final double[] DIFFICULTY_COEF = {1.00,0.93,0.78,0.63,0.48,0.33};
 
+    public Individual(int id, double adaptationDegree, double kPCoverage, double difficulty, List<QuestionEntity> questionList) {
+        this.id = id;
+        this.adaptationDegree = adaptationDegree;
+        this.kPCoverage = kPCoverage;
+        this.difficulty = difficulty;
+        this.questionList = questionList;
+    }
+
     public Individual(){
 
     }
@@ -34,11 +41,11 @@ public class Individual {
 
     //计算试卷个体难度系数 计算公式： 每题难度之和/题量
     public double getDifficulty(){
-        if (difficulty==0.00){
+        if (difficulty ==0) {
             double total = 0;
-            for (QuestionEntity question:questionList)
+            for (QuestionEntity question : questionList)
                 total += DIFFICULTY_COEF[question.getQuestionDifficultyId()];
-            difficulty = total/getQuestionSize();
+            difficulty = total / getQuestionSize();
         }
         return difficulty;
     }
@@ -50,7 +57,7 @@ public class Individual {
 
     //计算知识点覆盖率 公式为：个体包含的知识点/期望包含的知识点
     public void setKPCoverage(RuleBean rule){
-        if (kPCoverage==0.00){
+        if (kPCoverage == 0) {
             Set<Integer> result = new HashSet<Integer>();
             result.addAll(rule.getPointIds());
             //试卷中的知识点：把 input Stream 的每一个questionEntity元素，映射成 output Stream 的知识点id
@@ -59,7 +66,7 @@ public class Individual {
                     .collect(Collectors.toSet());
             // 交集操作得到所包含的知识点
             result.retainAll(another);
-            kPCoverage = result.size()/rule.getPointIds().size();
+            kPCoverage = result.size() * 1.0 / rule.getPointIds().size();
         }
     }
     public double getKPCoverage(){
@@ -76,9 +83,7 @@ public class Individual {
      * @param f2   难度系数的权重
      */
     public void setAdaptationDegree(RuleBean rule, double f1, double f2) {
-        if (adaptationDegree==0){
             adaptationDegree = 1 -(1-getKPCoverage())*f1 - Math.abs(DIFFICULTY_COEF[rule.getDifficulty()]-getDifficulty())*f2;
-        }
     }
 
     //检查是否含有某道题
@@ -143,13 +148,10 @@ public class Individual {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Individual){
-            if(this.id == ((Individual) obj).getId() && this.questionList == ((Individual) obj).getQuestionList()
-                    && this.adaptationDegree == ((Individual) obj).getAdaptationDegree()
-                    && this.difficulty == ((Individual) obj).getDifficulty()
-                    && this.kPCoverage == ((Individual) obj).getKPCoverage())
+            if(this.questionList.containsAll(((Individual) obj).getQuestionList()))
                 return true;
-
         }
         return false;
     }
+
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public interface PaperQuestionRepository extends CrudRepository<PaperQuestionEntity, Integer>
 {
     //根据试卷id删除记录
-    Integer deleteByPaperId(Integer paperId);
+    int deleteByPaperId(int paperId);
     //根据试卷id查找题目
-    List<PaperQuestionEntity> findByPaperId(Integer paperId);
+    List<PaperQuestionEntity> findByPaperId(int paperId);
 }

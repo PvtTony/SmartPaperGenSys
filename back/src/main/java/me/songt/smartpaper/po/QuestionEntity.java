@@ -3,10 +3,10 @@ package me.songt.smartpaper.po;
 import javax.persistence.*;
 
 /**
- * Created by Sarah on 2017/3/30.
+ * Created by Sarah on 2017/5/20.
  */
 @Entity
-@Table(name = "question",schema = "smartclass")
+@Table(name = "question", schema = "smartclass")
 public class QuestionEntity {
     private int questionId;
     private String questionContent;

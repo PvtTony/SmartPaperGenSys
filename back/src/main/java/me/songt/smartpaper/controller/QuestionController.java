@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import me.songt.smartpaper.po.QuestionEntity;
-import me.songt.smartpaper.repository.QuestionRepository;
 import me.songt.smartpaper.service.QuestionService;
 import me.songt.smartpaper.vo.question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -208,7 +206,7 @@ public class QuestionController {
     //添加题目
     @ApiOperation(value = "添加题目")
 //    @ApiImplicitParam(name = "questionEntity",value = "题目实体",required = true,dataType = "QuestionEntity")
-    @RequestMapping(value = "/",method = RequestMethod.POST)
+    @RequestMapping(value = "/",method = RequestMethod.POST, produces="application/json")
     public Map<String,Object> addQuestion(@RequestBody QuestionEntity questionEntity){
         return questionService.addQuestion(questionEntity);
     }
@@ -216,11 +214,11 @@ public class QuestionController {
     @ApiOperation(value="修改题目信息", notes="根据题目id修改题目信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "questionId", value = "试题id", required = true, dataType = "Integer",paramType = "path"),
-//            @ApiImplicitParam(name = "questionEntity",value = "题目实体",required = true,dataType = "QuestionEntity")
+            @ApiImplicitParam(name = "questionEntity",value = "题目实体",required = true,dataType = "QuestionEntity")
     })
     @RequestMapping(value = "/{questionId}",method = RequestMethod.PUT)
     public Map<String,Object> updateQuestion(@PathVariable Integer questionId,
-                                             @RequestBody QuestionEntity questionEntity){
+                                             @ModelAttribute QuestionEntity questionEntity){
         return questionService.updateQuestion(questionId,questionEntity);
     }
     //删除题目
@@ -238,4 +236,5 @@ public class QuestionController {
     public Question queryQuestion(@PathVariable int questionId){
         return questionService.query(questionId);
     }
+
 }

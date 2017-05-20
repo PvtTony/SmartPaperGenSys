@@ -1,8 +1,11 @@
 package me.songt.smartpaper.vo.paper;
 
 
+
+import org.springframework.stereotype.Component;
+
+import javax.persistence.Entity;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Sarah on 2017/5/8.
@@ -11,7 +14,7 @@ public class Paper {
     private int paperId;
     private String title; //试卷标题
     private double totalScore; //总分
-    private Map<PaperQuestionType,List<PaperQuestion>> questions;
+    private List<PaperQuestionType> paperTypesAndQuestions;
     private int subjectId;
     private int userId;
 
@@ -39,14 +42,6 @@ public class Paper {
         this.totalScore = totalScore;
     }
 
-    public Map<PaperQuestionType, List<PaperQuestion>> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(Map<PaperQuestionType, List<PaperQuestion>> questions) {
-        this.questions = questions;
-    }
-
     public int getSubjectId() {
         return subjectId;
     }
@@ -61,5 +56,13 @@ public class Paper {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public List<PaperQuestionType> getPaperTypesAndQuestions() {
+        return paperTypesAndQuestions;
+    }
+
+    public void setPaperTypesAndQuestions(List<PaperQuestionType> paperTypesAndQuestions) {
+        this.paperTypesAndQuestions = paperTypesAndQuestions;
     }
 }

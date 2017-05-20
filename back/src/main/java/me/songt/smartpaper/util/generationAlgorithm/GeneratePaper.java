@@ -21,33 +21,46 @@ public class GeneratePaper {
     private  boolean errorFlag = false;
 
     public  Individual getPaper(RuleBean rule,QuestionService questionService){
+        Long now = System.currentTimeMillis();
         // 迭代计数器
         int count = 0;
-        Individual best = null; //历史最佳个体
         if (rule!=null){
             Population population = new Population(20,true,rule,questionService);
             if (!population.isErrorFlag()){
-                best = population.getBestIndividual();
+                Individual best  = new Individual(population.getBestIndividual().getId(),
+                        population.getBestIndividual().getAdaptationDegree(),
+                        population.getBestIndividual().getKPCoverage(),
+                        population.getBestIndividual().getDifficulty(),
+                        population.getBestIndividual().getQuestionList()); //历史最佳个体
                 while (count < MAX_RUN_COUNT && best.getAdaptationDegree() < EXPAND){
-                    population = GA.evolvePopulation(population,questionService);
+                    population  = GA.evolvePopulation(population);//下一代种群
+                    population.computeFitness(rule);
                     //精英保留策略
                     Individual maxFit = population.getBestIndividual();  //当代群体中的最佳个体
                     //若历史最佳个体优于当代最佳个体，则将当代最差个体替换成历史最佳个体，否则更换历史最佳个体
                     if (best.getAdaptationDegree() > maxFit.getAdaptationDegree())
-                        population.setIndividual(population.getWorstIndividual(),best);
-                    else
-                        best = population.getBestIndividual();
+                        population.setIndividual(population.getWorstIndividual(), best);
+                    else {
+                        best = new Individual(maxFit.getId(),
+                                maxFit.getAdaptationDegree(),
+                                maxFit.getKPCoverage(),
+                                maxFit.getDifficulty(),
+                                maxFit.getQuestionList());
+                    }
                     count++;
                 }
+                Long now1 = System.currentTimeMillis();
+                System.out.println("组卷时间:"+ (now1-now));
+                return best;
             }
             else {
                 errorFlag = true;
                 errorMsg = population.getErrorMsg();
-            }
+          }
 
-        }
+     }
 
-        return best;
+        return null;
     }
 
     public String getErrorMsg() {

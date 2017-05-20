@@ -21,6 +21,7 @@ public class PaperEntity {
 
     @Id
     @Column(name = "paper_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getPaperId() {
         return paperId;
     }

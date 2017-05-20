@@ -1,8 +1,6 @@
 package me.songt.smartpaper.repository;
 
 import me.songt.smartpaper.po.QuestionEntity;
-import me.songt.smartpaper.vo.question.Question;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -10,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -33,7 +32,7 @@ public interface QuestionRepository extends PagingAndSortingRepository<QuestionE
     //根据科目id、知识点、难度系数查找试题
     List<QuestionEntity> findByQuestionSubjectIdAndQuestionKnowledgePointIdAndQuestionDifficultyId(int questionSubjectId,int questionKnowledgePointId,int questionDifficultyId);
     //根据科目id、知识点、题目类型查找试题
-    List<QuestionEntity> findByQuestionSubjectIdAndQuestionKnowledgePointIdAndQuestionTypeId(int questionSubjectId,int questionKnowledgePointId,int questionTypeId);
+    List<QuestionEntity> findByQuestionSubjectIdAndQuestionKnowledgePointIdAndQuestionTypeId(int questionSubjectId, int questionKnowledgePointId, int questionTypeId);
     //根据科目id、难度系数、题目类型查找试题
     List<QuestionEntity> findByQuestionSubjectIdAndQuestionDifficultyIdAndQuestionTypeId(int questionSubjectId,int questionDifficultyId,int questionTypeId);
 
@@ -46,4 +45,8 @@ public interface QuestionRepository extends PagingAndSortingRepository<QuestionE
             "a.questionOptionCount = :questionOptionCount,a.questionSolution=:questionSolution where a.questionId=:questionId")
     void updateQuestion(@Param("questionId") int questionId, @Param("questionContent") String questionContent,@Param("questionOption") String questionOption,@Param("questionAnswer") String questionAnswer,
                         @Param("questionOptionCount") int questionOptionCount,@Param("questionSolution") String questionSolution);
+
+    //根据题型和知识点集合查找题目
+    List<QuestionEntity> findByQuestionSubjectIdAndQuestionTypeIdAndQuestionKnowledgePointIdIn(int questionSubjectId,int questionTypeId, Collection<Integer> questionKnowledgePointIds);
+
 }

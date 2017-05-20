@@ -40,8 +40,8 @@ public class PaperServiceImpl implements PaperService {
     public Map<String, Object> addPaper(PaperEntity paper, List<PaperQuestionTypeEntity> types, List<PaperQuestionEntity> questions) {
         Map<String, Object> map = new HashMap<String, Object>();
         paper.setPaperGenerateTime(new Timestamp(System.currentTimeMillis()));
-        PaperEntity p = paperRepository.save(paper);
-        int paperId = p.getPaperId();
+        paperRepository.save(paper);
+        int paperId =paper.getPaperId();
 
         for (PaperQuestionTypeEntity type:types){
             type.setPaperId(paperId);
@@ -51,6 +51,7 @@ public class PaperServiceImpl implements PaperService {
         for (PaperQuestionEntity question:questions){
             question.setPaperId(paperId);
             paperQuestionRepository.save(question);
+
         }
 
         map.put("status",true);
@@ -72,7 +73,7 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public me.songt.smartpaper.vo.paper.Paper query(int paperId) {
+    public Paper query(int paperId) {
         Paper paper = new Paper();
 
         //根据试卷id查找到试卷
@@ -80,6 +81,8 @@ public class PaperServiceImpl implements PaperService {
         paper.setPaperId(p.getPaperId());
         paper.setTitle(p.getPaperTitle());
         paper.setTotalScore(p.getPaperScore());
+        paper.setSubjectId(p.getPaperSubjectId());
+        paper.setUserId(p.getPaperUserId());
 
         //根据试卷id查找到所含题型
         List<PaperQuestionTypeEntity> typeEntities = questionTypeRepository.findByPaperId(paperId);
@@ -98,29 +101,28 @@ public class PaperServiceImpl implements PaperService {
 
 
         //将试题按题型分类
-        Map<PaperQuestionType,List<PaperQuestion>> map = classifyByType(types,questions);
+        types = classifyByType(types,questions);
 
-        paper.setQuestions(map);
+        paper.setPaperTypesAndQuestions(types);
+
         return paper;
     }
 
 
     //将试题按题型分类
     @Override
-    public   Map<PaperQuestionType,List<PaperQuestion>> classifyByType(List<PaperQuestionType> types,List<PaperQuestion> questions){
-        Map<PaperQuestionType,List<PaperQuestion>> map = new HashMap<PaperQuestionType,List<PaperQuestion>>();
+    public   List<PaperQuestionType> classifyByType(List<PaperQuestionType> types,List<PaperQuestion> questions){
         for (PaperQuestionType type:types){
             List<PaperQuestion> paperQuestions = new ArrayList<PaperQuestion>();
             for (PaperQuestion question:questions){
                 if (question.getTypeId()==type.getTypeId()){
                     paperQuestions.add(question);
-                    questions.remove(question);
                 }
             }
             type.setCount(paperQuestions.size());
-            map.put(type,paperQuestions);
+            type.setPaperQuestions(paperQuestions);
         }
-        return map;
+        return types;
     }
 
     @Override

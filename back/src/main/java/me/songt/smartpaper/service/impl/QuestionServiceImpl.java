@@ -124,21 +124,10 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public QuestionEntity[] getQuestionArray(int typeId, List<Integer> pointIds, int subjectId) {
-        List<QuestionEntity> questionList = new ArrayList<QuestionEntity>();
-        for (Integer pointId:pointIds){
-            List<QuestionEntity> questions = questionRepository.findByQuestionSubjectIdAndQuestionKnowledgePointIdAndQuestionTypeId(subjectId,pointId,typeId);
-            questionList.addAll(questions);
-        }
-        QuestionEntity[] questionEntities = new QuestionEntity[questionList.size()];
-        return questionList.toArray(questionEntities);
-    }
-
-    @Override
-    public List<QuestionEntity> getQuestionListDifAndType(QuestionEntity question) {
-        List<QuestionEntity> questionList = questionRepository.findByQuestionSubjectIdAndQuestionDifficultyIdAndQuestionTypeId(question.getQuestionSubjectId(),question.getQuestionDifficultyId(),question.getQuestionTypeId());
-        questionList.remove(question);
-        return questionList;
+    public QuestionEntity[] getQuestionArray(int typeId,List<Integer>pointIds,int subjectId) {
+            List<QuestionEntity> questions = questionRepository.findByQuestionSubjectIdAndQuestionTypeIdAndQuestionKnowledgePointIdIn(subjectId,typeId,pointIds);
+        QuestionEntity[] questionEntities = new QuestionEntity[questions.size()];
+        return questions.toArray(questionEntities);
     }
 
     @Override

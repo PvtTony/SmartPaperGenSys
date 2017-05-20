@@ -18,6 +18,7 @@ public class PaperQuestionTypeEntity {
 
     @Id
     @Column(name = "record_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getRecordId() {
         return recordId;
     }

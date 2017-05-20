@@ -1,23 +1,18 @@
 package me.songt.smartpaper.controller;
 
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import me.songt.smartpaper.po.PaperEntity;
 import me.songt.smartpaper.po.PaperQuestionEntity;
 import me.songt.smartpaper.po.PaperQuestionTypeEntity;
-import me.songt.smartpaper.po.QuestionEntity;
 import me.songt.smartpaper.service.PaperService;
 import me.songt.smartpaper.service.QuestionService;
-import me.songt.smartpaper.util.QuestionUtil;
 import me.songt.smartpaper.util.generationAlgorithm.GeneratePaper;
 import me.songt.smartpaper.util.generationAlgorithm.Individual;
 import me.songt.smartpaper.util.generationAlgorithm.RuleBean;
 import me.songt.smartpaper.vo.paper.Paper;
 import me.songt.smartpaper.vo.paper.PaperQuestion;
 import me.songt.smartpaper.vo.paper.PaperQuestionType;
-import me.songt.smartpaper.vo.question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,7 +55,7 @@ public class PaperController {
 
     //查询试卷
     @ApiOperation(value = "查询试卷")
-    @ApiImplicitParam(name = "paperId", value = "试卷id", required = true, dataType = "Long",paramType = "path")
+    @ApiImplicitParam(name = "paperId", value = "试卷id", required = true, dataType = "Integer",paramType = "path")
     @RequestMapping(value = "/{paperId}",method = RequestMethod.GET)
     public Paper queryPaper(@PathVariable int paperId){
         return paperService.query(paperId);
@@ -68,16 +63,32 @@ public class PaperController {
 
     //添加试卷
     @ApiOperation(value = "添加试卷")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(name = "paper",value = "试卷实体",required = true,dataType = "PaperEntity"),
-//            @ApiImplicitParam(name = "types", value = "题型列表", required = false, dataType = "PaperQuestionTypeEntity",allowMultiple = true),
-//            @ApiImplicitParam(name = "questions", value = "题目列表", required = false, dataType = "PaperQuestionEntity",allowMultiple = true)
-//    })
+    @ApiImplicitParam(name = "paper", value = "试卷实体", required = true, dataType = "Paper")
     @RequestMapping(value = "/",method = RequestMethod.POST)
-    public Map<String, Object> addPaper(@RequestBody PaperEntity paper,
-                                        @RequestBody List<PaperQuestionTypeEntity> types,
-                                        @RequestBody List<PaperQuestionEntity> questions){
-       return paperService.addPaper(paper, types, questions);
+    public Map<String, Object> addPaper(@RequestBody Paper paper){
+        PaperEntity paperEntity = new PaperEntity();
+        paperEntity.setPaperUserId(paper.getUserId());
+        paperEntity.setPaperTitle(paper.getTitle());
+        paperEntity.setPaperScore(paper.getTotalScore());
+        paperEntity.setPaperSubjectId(paper.getSubjectId());
+
+        List<PaperQuestionTypeEntity> typeEntities = new ArrayList<PaperQuestionTypeEntity>();
+        List<PaperQuestionEntity> questionEntities = new ArrayList<PaperQuestionEntity>();
+        System.out.println(paper.getPaperTypesAndQuestions().size());
+        for (PaperQuestionType questionType:paper.getPaperTypesAndQuestions()){
+            PaperQuestionTypeEntity typeEntity = new PaperQuestionTypeEntity();
+            typeEntity.setPaperTypeId(questionType.getTypeId());
+            typeEntity.setPaperScore(questionType.getScore());
+            typeEntities.add(typeEntity);
+
+           for (PaperQuestion question:questionType.getPaperQuestions()){
+               PaperQuestionEntity questionEntity = new PaperQuestionEntity();
+               questionEntity.setPaperQuestionId(question.getQuestionId());
+               questionEntity.setPaperScore(question.getQuestionScore());
+               questionEntities.add(questionEntity);
+           }
+        }
+       return paperService.addPaper(paperEntity,typeEntities,questionEntities);
     }
 
     //自动组卷
@@ -88,14 +99,16 @@ public class PaperController {
         Map<String,Object> map = new HashMap<String,Object>();
         GeneratePaper  generator = new GeneratePaper();
         Individual individual = generator.getPaper(rule,questionService);
+        System.out.println(rule.getDifficulty());
         if (!generator.isErrorFlag()){
+            System.out.println("适应度"+ individual.getAdaptationDegree());
             Paper paper = new Paper();
             List<PaperQuestionType> types = rule.getEachTypeCount();
             List<PaperQuestion> questions = paperService.changeToPaperQuestion(individual.getQuestionList());
-            paper.setQuestions(paperService.classifyByType(types,questions));
-
+            paper.setPaperTypesAndQuestions(paperService.classifyByType(types,questions));
             map.put("status",true);
             map.put("paper",paper);
+            return map;
         }
 
         map.put("status",false);

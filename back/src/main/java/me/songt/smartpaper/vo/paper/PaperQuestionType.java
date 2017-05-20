@@ -1,5 +1,7 @@
 package me.songt.smartpaper.vo.paper;
 
+import java.util.List;
+
 /**
  * Created by Sarah on 2017/5/8.
  */
@@ -8,6 +10,7 @@ public class PaperQuestionType {
     private String typeName; //类型名称
     private int count; //题数
     private double score;  //分数
+    private List<PaperQuestion> paperQuestions;
 
     public int getTypeId() {
         return typeId;
@@ -39,5 +42,13 @@ public class PaperQuestionType {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public List<PaperQuestion> getPaperQuestions() {
+        return paperQuestions;
+    }
+
+    public void setPaperQuestions(List<PaperQuestion> paperQuestions) {
+        this.paperQuestions = paperQuestions;
     }
 }

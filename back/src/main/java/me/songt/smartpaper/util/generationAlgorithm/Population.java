@@ -7,7 +7,6 @@ import me.songt.smartpaper.vo.paper.PaperQuestionType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -18,7 +17,7 @@ public class Population {
     private Individual[] individuals; //试卷集合
     private boolean errorFlag = false;
     private String errorMsg;
-
+    private List<QuestionEntity[]> questions; //题库
     /**
      * 初始种群
      *
@@ -29,15 +28,19 @@ public class Population {
     public Population(int populationSize, boolean initFlag, RuleBean rule,QuestionService questionService) {
 
         individuals = new Individual[populationSize];
+        int subjectId = rule.getSubjectId();
+        questions = new ArrayList<QuestionEntity[]>();
+        for (PaperQuestionType type:rule.getEachTypeCount())
+            questions.add(questionService.getQuestionArray(type.getTypeId(),rule.getPointIds(),subjectId));
         if (initFlag){
             Individual individual;
             Random random = new Random();
             for (int i=0;i< populationSize;i++){
                 individual = new Individual();
                 individual.setId(i+1);
-                int subjectId = rule.getSubjectId();
-                for (PaperQuestionType typeCount:rule.getEachTypeCount()){
-                    individual = generateQuestion(typeCount,random,subjectId,rule.getPointIds(),individual,questionService);
+                List<PaperQuestionType> typeCount = rule.getEachTypeCount();
+                for (int j=0;j<rule.getEachTypeCount().size();j++){
+                    individual = generateQuestion(typeCount.get(j),random,individual,questions.get(j));
                     if (errorFlag)
                         return;
                 }
@@ -53,10 +56,12 @@ public class Population {
         individuals = new Individual[populationSize];
     }
 
-    //根据科目、题型、题量、知识点随机筛选试题
-    private Individual generateQuestion(PaperQuestionType type, Random random, int subjectId,
-                                  List<Integer> pointIds,Individual individual,QuestionService questionService){
-        QuestionEntity[] questionArray = questionService.getQuestionArray(type.getTypeId(),pointIds,subjectId);
+    public Population() {
+    }
+
+    //根据科目、题型、题量随机筛选试题
+    private Individual generateQuestion(PaperQuestionType type, Random random,
+                                 Individual individual,QuestionEntity[] questionArray){
         int questionNum = type.getCount();
         if (questionArray.length<questionNum){
             errorMsg = type.getTypeName() + "数量不够，组卷失败";
@@ -66,7 +71,7 @@ public class Population {
         }
         QuestionEntity tmpQuestion;
         for (int i=0;i< questionNum;i++){
-            int index = random.nextInt(questionArray.length-i);
+            int index  = random.nextInt(questionArray.length - i);
             individual.addQuestion(questionArray[index]);
             // 保证不会重复添加试题,将随机筛选的试题与最后一位交换
             tmpQuestion = questionArray[questionArray.length-i-1];
@@ -107,7 +112,8 @@ public class Population {
 
     //设置种群中某个个体
     public void setIndividual(int index,Individual individual){
-        individuals[index] = individual;
+        individuals[index] = new Individual(individual.getId(),individual.getAdaptationDegree(),individual.getKPCoverage(),
+                individual.getDifficulty(),individual.getQuestionList());
     }
 
     //返回种群规模
@@ -156,4 +162,13 @@ public class Population {
             individuals[i].setAdaptationDegree(rule,Global.KP_WEIGHT,Global.DIFFICULTY_WEIGHT);
         }
     }
+
+    public List<QuestionEntity[]> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<QuestionEntity[]> questions) {
+        this.questions = questions;
+    }
+
 }

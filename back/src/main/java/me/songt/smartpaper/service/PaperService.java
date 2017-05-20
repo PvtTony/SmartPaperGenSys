@@ -34,5 +34,5 @@ public interface PaperService {
     List<PaperQuestion> changeToPaperQuestion(List<QuestionEntity> questionList);
     List<PaperQuestionType> changeToPaperQuestionType(List<PaperQuestionTypeEntity> typeEntities);
     //将试题按题型分类
-    Map<PaperQuestionType,List<PaperQuestion>> classifyByType(List<PaperQuestionType> types,List<PaperQuestion> questions);
+    List<PaperQuestionType> classifyByType(List<PaperQuestionType> types,List<PaperQuestion> questions);
 }
