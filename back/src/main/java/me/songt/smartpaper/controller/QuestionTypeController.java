@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import me.songt.smartpaper.po.QuestionType;
 import me.songt.smartpaper.service.QuestionTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/smartpaper/questionType")
 public class QuestionTypeController {
+    @Qualifier("questionTypeServiceImpl")
     @Autowired
     private QuestionTypeService typeService;
 

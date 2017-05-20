@@ -14,5 +14,9 @@ import java.util.List;
 @Repository
 public interface ExamResultRepository extends CrudRepository<ExamResult, Integer>
 {
-    List<ExamResult> findBystudentId(int studentId);
+//    List<ExamResult> findBystudentId(int studentId);
+
+//    ExamResult findBypaperIdAndquestionIdAndstudentId(int paperId, int questionId, int studentId);
+
+
 }

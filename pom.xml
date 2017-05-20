@@ -73,6 +73,13 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>back/src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>back/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testSourceDirectory>back/src/test</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
