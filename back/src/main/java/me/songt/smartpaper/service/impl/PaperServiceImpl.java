@@ -37,8 +37,7 @@ public class PaperServiceImpl implements PaperService {
     private QuestionRepository questionRepository;
 
     @Override
-    public Map<String, Object> addPaper(PaperEntity paper, List<PaperQuestionTypeEntity> types, List<PaperQuestionEntity> questions) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    public Paper addPaper(PaperEntity paper, List<PaperQuestionTypeEntity> types, List<PaperQuestionEntity> questions) {
         paper.setPaperGenerateTime(new Timestamp(System.currentTimeMillis()));
         paperRepository.save(paper);
         int paperId =paper.getPaperId();
@@ -54,9 +53,7 @@ public class PaperServiceImpl implements PaperService {
 
         }
 
-        map.put("status",true);
-        map.put("message","添加试卷成功");
-        return map;
+        return query(paperId);
     }
 
     @Override

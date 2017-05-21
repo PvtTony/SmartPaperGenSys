@@ -20,7 +20,7 @@ import java.util.Map;
 public interface PaperService {
 
     //添加试卷
-    Map<String, Object> addPaper(PaperEntity paper, List<PaperQuestionTypeEntity> types, List<PaperQuestionEntity> questions);
+    Paper addPaper(PaperEntity paper, List<PaperQuestionTypeEntity> types, List<PaperQuestionEntity> questions);
     //删除试卷
     Map<String, Object> deletePaper(int paperId);
     //查看试卷

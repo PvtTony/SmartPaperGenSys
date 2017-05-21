@@ -65,7 +65,7 @@ public class PaperController {
     @ApiOperation(value = "添加试卷")
     @ApiImplicitParam(name = "paper", value = "试卷实体", required = true, dataType = "Paper")
     @RequestMapping(value = "/",method = RequestMethod.POST)
-    public Map<String, Object> addPaper(@RequestBody Paper paper){
+    public Paper addPaper(@RequestBody Paper paper){
         PaperEntity paperEntity = new PaperEntity();
         paperEntity.setPaperUserId(paper.getUserId());
         paperEntity.setPaperTitle(paper.getTitle());
