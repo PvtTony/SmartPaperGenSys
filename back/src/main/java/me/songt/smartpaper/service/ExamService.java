@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public interface ExamService
 {
-    List<Exam> getExamByStudentId(int studentId, int pageIndex, int pageSize, String sortField, boolean desc);
+    List<Exam> getExamByStudentId(int studentId);
 
     Exam addExam(String examName, long startTime, long endTime, int paperId);
 

@@ -42,7 +42,7 @@ public class ExamServiceImpl implements ExamService
 
 
     @Override
-    public List<Exam> getExamByStudentId(int studentId, int pageIndex, int pageSize, String sortField, boolean desc)
+    public List<Exam> getExamByStudentId(int studentId)
     {
         List<Exam> exams = new ArrayList<>();
         List<ExamPerson> examPeople = examPersonRepository.findByexamStudentId(studentId);
@@ -56,8 +56,6 @@ public class ExamServiceImpl implements ExamService
             exam.setExamStartTime(poExam.getExamStartTime());
             exam.setExamEndTime(poExam.getExamEndtime());
             exam.setExamPaper(paperService.query(poExam.getExamPaperId()));
-
-
             exam.setExamStudentList(getExamPersonList(examId));
             exams.add(exam);
         }

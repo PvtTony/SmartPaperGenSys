@@ -1,6 +1,8 @@
 package me.songt.smartpaper.controller;
 
+import me.songt.smartpaper.po.ExamResult;
 import me.songt.smartpaper.po.Student;
+import me.songt.smartpaper.service.ExamAnswerService;
 import me.songt.smartpaper.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,15 +22,13 @@ public class ExamController
     @Autowired
     private ExamService examService;
 
+    @Autowired
+    private ExamAnswerService examAnswerService;
 
     @GetMapping("/smartpaper/exam/studentId/{studentId}")
-    public List<Exam> findExamByStudentId(@PathVariable("studentId") int studentId,
-                                          @RequestParam(defaultValue = "1") int pageIndex,
-                                          @RequestParam(defaultValue = "10") int pageSize,
-                                          @RequestParam(defaultValue = "examName") String sortField,
-                                          @RequestParam(defaultValue = "1") int desc)
+    public List<Exam> findExamByStudentId(@PathVariable("studentId") int studentId)
     {
-        return examService.getExamByStudentId(studentId, pageIndex, pageSize, sortField, desc == 1);
+        return examService.getExamByStudentId(studentId);
     }
 
     @PostMapping("/smartpaper/exam")
@@ -38,6 +38,14 @@ public class ExamController
                         @RequestParam int paperId)
     {
         return examService.addExam(examName, startTime, endTime, paperId);
+    }
+
+    @PostMapping("/smartpaper/exam/")
+    public List<ExamResult> submitAnswer(@RequestParam int paperId,
+                                         @RequestParam int studentId,
+                                         @RequestParam String answerJson)
+    {
+        return examAnswerService.addStudentAnswer(paperId, studentId, answerJson);
     }
 
     @PutMapping("/smartpaper/exam/{examId}")
@@ -81,6 +89,8 @@ public class ExamController
     {
         examService.removeExamPerson(examId, studentId);
     }
+
+
 
 
 
