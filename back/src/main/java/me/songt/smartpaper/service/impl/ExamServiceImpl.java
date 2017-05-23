@@ -1,5 +1,6 @@
 package me.songt.smartpaper.service.impl;
 
+import com.sun.istack.internal.NotNull;
 import me.songt.smartpaper.po.ExamPerson;
 import me.songt.smartpaper.po.Student;
 import me.songt.smartpaper.repository.ExamPersonRepository;
@@ -60,6 +61,26 @@ public class ExamServiceImpl implements ExamService
             exams.add(exam);
         }
         return exams;
+    }
+
+    @Override
+    public List<Exam> getAllExams()
+    {
+        List<Exam> exams = new ArrayList<>();
+        @NotNull
+        List<me.songt.smartpaper.po.Exam> examList = (List< me.songt.smartpaper.po.Exam>) examRepository.findAll();
+        for (me.songt.smartpaper.po.Exam exam : examList)
+        {
+            Exam examItem = new Exam();
+            examItem.setExamId(exam.getExamId());
+            examItem.setExamPaper(paperService.query(exam.getExamPaperId()));
+            examItem.setExamStartTime(exam.getExamStartTime());
+            examItem.setExamEndTime(exam.getExamEndtime());
+            examItem.setExamStudentList(getExamPersonList(exam.getExamId()));
+            exams.add(examItem);
+        }
+        return exams;
+
     }
 
     @Override

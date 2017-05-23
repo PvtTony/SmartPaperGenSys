@@ -6,6 +6,7 @@ import me.songt.smartpaper.po.ExamResult;
 import me.songt.smartpaper.repository.ExamResultRepository;
 import me.songt.smartpaper.service.ExamAnswerService;
 import me.songt.smartpaper.service.QuestionService;
+import me.songt.smartpaper.service.WrongAnswerService;
 import me.songt.smartpaper.vo.answer.Answer;
 import me.songt.smartpaper.vo.question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class ExamAnswerServiceImpl implements ExamAnswerService
 {
     @Autowired
     private ExamResultRepository examResultRepository;
+
+    @Autowired
+    private WrongAnswerService wrongAnswerService;
 
     @Autowired
     private QuestionService questionService;
@@ -43,14 +47,25 @@ public class ExamAnswerServiceImpl implements ExamAnswerService
                         .toLowerCase()
                         .replace(" ", "")
                         .replaceAll("\\d+-\\d+", "");
-                examResult.setQuestionIsCorrect(answer.getQuestionAnswer()
-                        .trim().toLowerCase().equals(correctAnswer) ? new Integer(1).byteValue() : new Integer(0).byteValue());
+                boolean isAnswerCorrect = answer.getQuestionAnswer()
+                        .trim().toLowerCase().equals(correctAnswer);
+
+                if (!isAnswerCorrect)
+                {
+                    wrongAnswerService.addWrongAnswer(question.getQuestionId(), studentId, answer.getQuestionAnswer());
+                }
+                examResult.setQuestionIsCorrect(isAnswerCorrect ? new Integer(1).byteValue() : new Integer(0).byteValue());
             }
             else if (question != null && question.getQuestionTypeId() == 1)
             {
                 String correctAnswer = question.getQuestionAnswer().trim().toLowerCase();
-                examResult.setQuestionIsCorrect(answer.getQuestionAnswer()
-                        .trim().toLowerCase().equals(correctAnswer) ? new Integer(1).byteValue() : new Integer(0).byteValue());
+                boolean isAnswerCorrect = answer.getQuestionAnswer()
+                        .trim().toLowerCase().equals(correctAnswer);
+                if (!isAnswerCorrect)
+                {
+                    wrongAnswerService.addWrongAnswer(question.getQuestionId(), studentId, answer.getQuestionAnswer());
+                }
+                examResult.setQuestionIsCorrect(isAnswerCorrect ? new Integer(1).byteValue() : new Integer(0).byteValue());
             }
             examResult.setStudentAnswer(answer.getQuestionAnswer());
             examResult.setStudentId(studentId);
