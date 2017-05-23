@@ -1,6 +1,5 @@
 package me.songt.smartpaper.service.impl;
 
-import com.sun.istack.internal.NotNull;
 import me.songt.smartpaper.po.ExamPerson;
 import me.songt.smartpaper.po.Student;
 import me.songt.smartpaper.repository.ExamPersonRepository;
@@ -74,7 +73,7 @@ public class ExamServiceImpl implements ExamService
     public List<Exam> getAllExams()
     {
         List<Exam> exams = new ArrayList<>();
-        @NotNull
+//        @NotNull
         List<me.songt.smartpaper.po.Exam> examList = (List< me.songt.smartpaper.po.Exam>) examRepository.findAll();
         for (me.songt.smartpaper.po.Exam exam : examList)
         {
