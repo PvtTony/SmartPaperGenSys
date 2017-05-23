@@ -31,6 +31,14 @@ public class ExamController
         return examService.getExamByStudentId(studentId);
     }
 
+    @GetMapping("/smartpaper/exam")
+    public List<Exam> getAllExam()
+    {
+        return examService.getAllExams();
+    }
+
+
+
     @PostMapping("/smartpaper/exam")
     public Exam addExam(@RequestParam String examName,
                         @RequestParam long startTime,
@@ -40,9 +48,9 @@ public class ExamController
         return examService.addExam(examName, startTime, endTime, paperId);
     }
 
-    @PostMapping("/smartpaper/exam/")
+    @PostMapping("/smartpaper/exam/studentId/{studentId}")
     public List<ExamResult> submitAnswer(@RequestParam int paperId,
-                                         @RequestParam int studentId,
+                                         @PathVariable("studentId") int studentId,
                                          @RequestParam String answerJson)
     {
         return examAnswerService.addStudentAnswer(paperId, studentId, answerJson);

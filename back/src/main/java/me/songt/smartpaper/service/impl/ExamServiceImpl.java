@@ -48,12 +48,19 @@ public class ExamServiceImpl implements ExamService
         List<Exam> exams = new ArrayList<>();
         List<ExamPerson> examPeople = examPersonRepository.findByexamStudentId(studentId);
 
+//        long currentTime = System.currentTimeMillis();
+        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+
         for (ExamPerson person : examPeople)
         {
             Exam exam = new Exam();
             int examId = person.getExamId();
             me.songt.smartpaper.po.Exam poExam = examRepository.findOne(examId);
             exam.setExamId(poExam.getExamId());
+            if (poExam.getExamStartTime().after(currentTime))
+            {
+                continue;
+            }
             exam.setExamStartTime(poExam.getExamStartTime());
             exam.setExamEndTime(poExam.getExamEndtime());
             exam.setExamPaper(paperService.query(poExam.getExamPaperId()));
