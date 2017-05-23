@@ -9,6 +9,8 @@ import me.songt.smartpaper.service.QuestionService;
 import me.songt.smartpaper.service.WrongAnswerService;
 import me.songt.smartpaper.vo.answer.Answer;
 import me.songt.smartpaper.vo.question.Question;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import java.util.List;
 @Service
 public class ExamAnswerServiceImpl implements ExamAnswerService
 {
+    private Logger logger = LoggerFactory.getLogger(ExamAnswerServiceImpl.class);
+
     @Autowired
     private ExamResultRepository examResultRepository;
 
@@ -47,6 +51,7 @@ public class ExamAnswerServiceImpl implements ExamAnswerService
                         .toLowerCase()
                         .replace(" ", "")
                         .replaceAll("\\d+-\\d+", "");
+                logger.debug(correctAnswer);
                 boolean isAnswerCorrect = answer.getQuestionAnswer()
                         .trim().toLowerCase().equals(correctAnswer);
 
@@ -61,6 +66,7 @@ public class ExamAnswerServiceImpl implements ExamAnswerService
                 String correctAnswer = question.getQuestionAnswer().trim().toLowerCase();
                 boolean isAnswerCorrect = answer.getQuestionAnswer()
                         .trim().toLowerCase().equals(correctAnswer);
+                logger.debug(correctAnswer);
                 if (!isAnswerCorrect)
                 {
                     wrongAnswerService.addWrongAnswer(question.getQuestionId(), studentId, answer.getQuestionAnswer());

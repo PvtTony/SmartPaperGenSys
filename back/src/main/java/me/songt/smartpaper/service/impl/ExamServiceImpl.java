@@ -56,7 +56,7 @@ public class ExamServiceImpl implements ExamService
             int examId = person.getExamId();
             me.songt.smartpaper.po.Exam poExam = examRepository.findOne(examId);
             exam.setExamId(poExam.getExamId());
-            if (poExam.getExamStartTime().after(currentTime))
+            if (poExam.getExamEndtime().before(currentTime))
             {
                 continue;
             }
