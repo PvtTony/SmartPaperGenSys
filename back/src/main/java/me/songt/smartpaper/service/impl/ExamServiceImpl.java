@@ -42,10 +42,13 @@ public class ExamServiceImpl implements ExamService
 
 
     @Override
-    public List<Exam> getExamByStudentId(int studentId, int pageIndex, int pageSize, String sortField, boolean desc)
+    public List<Exam> getExamByStudentId(int studentId)
     {
         List<Exam> exams = new ArrayList<>();
         List<ExamPerson> examPeople = examPersonRepository.findByexamStudentId(studentId);
+
+//        long currentTime = System.currentTimeMillis();
+        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
         for (ExamPerson person : examPeople)
         {
@@ -53,15 +56,37 @@ public class ExamServiceImpl implements ExamService
             int examId = person.getExamId();
             me.songt.smartpaper.po.Exam poExam = examRepository.findOne(examId);
             exam.setExamId(poExam.getExamId());
+            if (poExam.getExamEndtime().before(currentTime))
+            {
+                continue;
+            }
             exam.setExamStartTime(poExam.getExamStartTime());
             exam.setExamEndTime(poExam.getExamEndtime());
             exam.setExamPaper(paperService.query(poExam.getExamPaperId()));
-
-
             exam.setExamStudentList(getExamPersonList(examId));
             exams.add(exam);
         }
         return exams;
+    }
+
+    @Override
+    public List<Exam> getAllExams()
+    {
+        List<Exam> exams = new ArrayList<>();
+//        @NotNull
+        List<me.songt.smartpaper.po.Exam> examList = (List< me.songt.smartpaper.po.Exam>) examRepository.findAll();
+        for (me.songt.smartpaper.po.Exam exam : examList)
+        {
+            Exam examItem = new Exam();
+            examItem.setExamId(exam.getExamId());
+            examItem.setExamPaper(paperService.query(exam.getExamPaperId()));
+            examItem.setExamStartTime(exam.getExamStartTime());
+            examItem.setExamEndTime(exam.getExamEndtime());
+            examItem.setExamStudentList(getExamPersonList(exam.getExamId()));
+            exams.add(examItem);
+        }
+        return exams;
+
     }
 
     @Override

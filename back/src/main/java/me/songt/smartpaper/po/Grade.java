@@ -6,6 +6,7 @@ import javax.persistence.*;
  * Created by tony on 2017/3/19.
  */
 @Entity
+@Table(name = "grade")
 public class Grade
 {
     private int gradeId;

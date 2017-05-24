@@ -1,14 +1,12 @@
 package me.songt.smartpaper.po;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Sarah on 2017/5/16.
  */
 @Entity
+@Table(name = "difficulty")
 public class Difficulty {
     private int difficultyId;
     private String difficultyCoef;
