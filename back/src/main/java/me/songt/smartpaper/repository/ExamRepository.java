@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 public interface ExamRepository extends CrudRepository<Exam, Integer>
 {
 //    Page<Exam> findByexamName(String examName);
+    Exam findByExamPaperId(int examPaperId);
 
 //    Page<Exam> findByExamNameLike(String examName);
 

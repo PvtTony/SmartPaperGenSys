@@ -22,8 +22,8 @@ public class DataMiningController
 
     @GetMapping("/smartpaper/exam/{examId}/mining")
     public AnalysisResult getExamResults(@PathVariable("examId") int examId,
-                                         @RequestParam(defaultValue = "0.5") double minSupport,
-                                         @RequestParam(defaultValue = "0.5") double minConf)
+                                         @RequestParam(defaultValue = "0.43") double minSupport,
+                                         @RequestParam(defaultValue = "0.34") double minConf)
     {
         return dataMiningService.getExamMiningResult(minSupport, minConf, examId);
     }

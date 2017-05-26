@@ -23,9 +23,6 @@ import java.util.List;
 public class ExamServiceImpl implements ExamService
 {
     @Autowired
-    private ExamResultRepository examResultRepository;
-
-    @Autowired
     private ExamPersonRepository examPersonRepository;
 
     @Autowired
@@ -91,6 +88,14 @@ public class ExamServiceImpl implements ExamService
     @Override
     public Exam getRecentExam(int studentId)
     {
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        List<ExamPerson> examPeople = examPersonRepository.findByexamStudentId(studentId);
+        examPeople.forEach(examPerson -> {
+            int examId = examPerson.getExamId();
+            me.songt.smartpaper.po.Exam poExam = examRepository.findOne(examId);
+            Timestamp startTime = poExam.getExamStartTime();
+
+        });
         return null;
     }
 

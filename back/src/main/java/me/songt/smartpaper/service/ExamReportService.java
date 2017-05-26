@@ -1,7 +1,9 @@
 package me.songt.smartpaper.service;
 
-import me.songt.smartpaper.vo.report.Report;
+import me.songt.smartpaper.vo.report.StudentExamReport;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by tony on 2017/5/23.
@@ -9,7 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ExamReportService
 {
-    Report getExamReport(int studentId, int examId);
+    StudentExamReport getExamReport(int studentId, int examId);
 
+    List<StudentExamReport> getTotalReport(int studentId);
+
+//    List<StudentExamReport>
 
 }

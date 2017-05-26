@@ -17,8 +17,6 @@ public class WrongAnswerInfo
     private int studentId;
     private String questionWrongAnswer;
 
-    @Autowired
-    private QuestionService questionService;
 
 
     public WrongAnswerInfo()
@@ -26,12 +24,11 @@ public class WrongAnswerInfo
 
     }
 
-    public WrongAnswerInfo(int recordId, int questionid, int studentId, String questionWrongAnswer)
+    public WrongAnswerInfo(int recordId, Question question, int studentId, String questionWrongAnswer)
     {
         this.recordId = recordId;
         this.studentId = studentId;
         this.questionWrongAnswer = questionWrongAnswer;
-        this.question = questionService.query(questionid);
     }
 
     public int getRecordId()

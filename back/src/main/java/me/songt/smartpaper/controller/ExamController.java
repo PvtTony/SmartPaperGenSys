@@ -6,10 +6,8 @@ import me.songt.smartpaper.po.Student;
 import me.songt.smartpaper.service.ExamAnswerService;
 import me.songt.smartpaper.service.ExamReportService;
 import me.songt.smartpaper.service.ExamService;
-import me.songt.smartpaper.vo.report.Report;
+import me.songt.smartpaper.vo.report.StudentExamReport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import me.songt.smartpaper.vo.exam.Exam;
 
@@ -103,7 +101,7 @@ public class ExamController
     }
 
     @GetMapping("/smartpaper/exam/{examId}/student/{studentId}/report")
-    public Report getExamReport(@PathVariable("studentId") int studentId, @PathVariable("examId") int examId)
+    public StudentExamReport getExamReport(@PathVariable("studentId") int studentId, @PathVariable("examId") int examId)
     {
         return examReportService.getExamReport(studentId, examId);
     }

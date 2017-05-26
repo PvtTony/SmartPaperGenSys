@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 public class WrongAnswerController
 {
-
     @Autowired
     private WrongAnswerService wrongAnswerService;
 

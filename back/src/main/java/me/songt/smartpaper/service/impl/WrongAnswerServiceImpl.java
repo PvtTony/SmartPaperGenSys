@@ -2,6 +2,7 @@ package me.songt.smartpaper.service.impl;
 
 import me.songt.smartpaper.po.WrongAnswer;
 import me.songt.smartpaper.repository.WrongAnswerRepository;
+import me.songt.smartpaper.service.QuestionService;
 import me.songt.smartpaper.service.WrongAnswerService;
 import me.songt.smartpaper.vo.wa.WrongAnswerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class WrongAnswerServiceImpl implements WrongAnswerService
     @Autowired
     private WrongAnswerRepository wrongAnswerRepository;
 
+    @Autowired
+    private QuestionService questionService;
+
     @Override
     public WrongAnswer addWrongAnswer(int questionId, int studentId, String wrongAnswer)
     {
@@ -37,7 +41,7 @@ public class WrongAnswerServiceImpl implements WrongAnswerService
         List<WrongAnswer> wrongAnswers = wrongAnswerRepository.findByStudentId(studentId);
         List<WrongAnswerInfo> wrongAnswerInfos = new ArrayList<>();
         wrongAnswers.forEach(wrongAnswer -> wrongAnswerInfos.add(new WrongAnswerInfo(wrongAnswer.getRecordId(),
-                wrongAnswer.getQuestionId(),
+                questionService.query(wrongAnswer.getQuestionId()),
                 wrongAnswer.getStudentId(),
                 wrongAnswer.getQuestionWrongAnswer())));
         return wrongAnswerInfos;

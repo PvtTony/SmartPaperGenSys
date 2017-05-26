@@ -47,7 +47,6 @@ public class DataMiningServiceImpl implements DataMiningService
         Exam exam = examRepository.findOne(examId);
 
         int paperId = exam.getExamPaperId();
-//        List<ExamResult> examResults = examResultRepository.findByPaperId(paperId);
 
         List<ExamPerson> examPeople = examPersonRepository.findByexamId(examId);
         List<Transaction> apriTransaction = new ArrayList<>();
@@ -82,9 +81,9 @@ public class DataMiningServiceImpl implements DataMiningService
             List<PaperQuestionTypeEntity> typeEntities = new ArrayList<>();
 
             PaperEntity paperEntity = new PaperEntity();
-            paperEntity.setPaperIsShare(new Integer(1).byteValue());
+            paperEntity.setPaperIsShare(new Integer(0).byteValue());
             paperEntity.setPaperSubjectId(1);
-            paperEntity.setPaperTitle("考试： " + exam.getExamName() + " 附加测试");
+            paperEntity.setPaperTitle("考试： " + exam.getExamName() + " 加强测试");
             paperEntity.setPaperUserId(1);
 
             for (AssociationRule rule :
@@ -235,7 +234,7 @@ public class DataMiningServiceImpl implements DataMiningService
 
 
     //Combination
-    private List<Integer[]> combination(Integer[] questions, int selection)
+    /*private List<Integer[]> combination(Integer[] questions, int selection)
     {
         int questionAmount = questions.length;
         List<Integer[]> combinationList = new ArrayList<>();
@@ -269,5 +268,5 @@ public class DataMiningServiceImpl implements DataMiningService
     private int nextN(int N)
     {
         return (N + (N & (-N))) | ((N ^ (N + (N & (-N)))) / (N & (-N))) >> 2;
-    }
+    }*/
 }
