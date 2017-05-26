@@ -29,6 +29,7 @@ public class WrongAnswerInfo
         this.recordId = recordId;
         this.studentId = studentId;
         this.questionWrongAnswer = questionWrongAnswer;
+        this.question = question;
     }
 
     public int getRecordId()
