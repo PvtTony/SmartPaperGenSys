@@ -1,6 +1,7 @@
 package me.songt.smartpaper.service;
 
 import me.songt.smartpaper.po.WrongAnswer;
+import me.songt.smartpaper.vo.wa.WrongAnswerInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +14,7 @@ public interface WrongAnswerService
 {
     WrongAnswer addWrongAnswer(int questionId, int studentId, String wrongAnswer);
 
-//    WrongAnswer addWrongAnswer(WrongAnswer wrongAnswer);
-
-    List<WrongAnswer> getWrongAnswers(int studentId);
+    List<WrongAnswerInfo> getWrongAnswers(int studentId);
 
     void removeWrongAnswer(int questionId, int studentId);
 

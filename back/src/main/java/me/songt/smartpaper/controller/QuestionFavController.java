@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import me.songt.smartpaper.po.QuestionFav;
-import me.songt.smartpaper.service.impl.QuestionFavService;
+import me.songt.smartpaper.service.QuestionFavService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

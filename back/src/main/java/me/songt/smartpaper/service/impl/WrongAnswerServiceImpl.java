@@ -3,10 +3,12 @@ package me.songt.smartpaper.service.impl;
 import me.songt.smartpaper.po.WrongAnswer;
 import me.songt.smartpaper.repository.WrongAnswerRepository;
 import me.songt.smartpaper.service.WrongAnswerService;
+import me.songt.smartpaper.vo.wa.WrongAnswerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,9 +32,15 @@ public class WrongAnswerServiceImpl implements WrongAnswerService
     }
 
     @Override
-    public List<WrongAnswer> getWrongAnswers(int studentId)
+    public List<WrongAnswerInfo> getWrongAnswers(int studentId)
     {
-        return wrongAnswerRepository.findByStudentId(studentId);
+        List<WrongAnswer> wrongAnswers = wrongAnswerRepository.findByStudentId(studentId);
+        List<WrongAnswerInfo> wrongAnswerInfos = new ArrayList<>();
+        wrongAnswers.forEach(wrongAnswer -> wrongAnswerInfos.add(new WrongAnswerInfo(wrongAnswer.getRecordId(),
+                wrongAnswer.getQuestionId(),
+                wrongAnswer.getStudentId(),
+                wrongAnswer.getQuestionWrongAnswer())));
+        return wrongAnswerInfos;
     }
 
     @Override

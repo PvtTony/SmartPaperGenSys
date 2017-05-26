@@ -22,11 +22,8 @@ import java.util.List;
 @Service
 public class ExamServiceImpl implements ExamService
 {
-
-
     @Autowired
     private ExamResultRepository examResultRepository;
-    
 
     @Autowired
     private ExamPersonRepository examPersonRepository;
@@ -92,6 +89,12 @@ public class ExamServiceImpl implements ExamService
     }
 
     @Override
+    public Exam getRecentExam(int studentId)
+    {
+        return null;
+    }
+
+    @Override
     public Exam addExam(String examName, long startTime, long endTime, int paperId)
     {
         me.songt.smartpaper.po.Exam poExam = new me.songt.smartpaper.po.Exam();
@@ -138,7 +141,7 @@ public class ExamServiceImpl implements ExamService
         voExam.setExamEndTime(poExam.getExamEndtime());
         voExam.setExamPaper(paperService.query(poExam.getExamPaperId()));
         voExam.setExamStudentList(getExamPersonList(poExam.getExamId()));
-        return null;
+        return voExam;
     }
 
     @Override

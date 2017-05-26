@@ -4,6 +4,7 @@ import me.songt.smartpaper.po.QuestionEntity;
 import me.songt.smartpaper.po.QuestionFav;
 import me.songt.smartpaper.repository.QuestionFavRepository;
 import me.songt.smartpaper.repository.QuestionRepository;
+import me.songt.smartpaper.service.QuestionFavService;
 import me.songt.smartpaper.util.QuestionUtil;
 import me.songt.smartpaper.vo.question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,8 @@ import java.util.Map;
  * Created by Sarah on 2017/5/23.
  */
 @Service
-public class QuestionFavServiceImpl implements QuestionFavService {
+public class QuestionFavServiceImpl implements QuestionFavService
+{
     @Autowired
     private QuestionFavRepository favRepository;
     @Autowired

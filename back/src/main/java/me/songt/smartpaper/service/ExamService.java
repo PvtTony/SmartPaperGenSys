@@ -18,6 +18,8 @@ public interface ExamService
 
     List<Exam> getAllExams();
 
+    Exam getRecentExam(int studentId);
+
     Exam addExam(String examName, long startTime, long endTime, int paperId);
 
     Exam modifyExam(int examId, String examName, long startTime, long endTime, int paperId);

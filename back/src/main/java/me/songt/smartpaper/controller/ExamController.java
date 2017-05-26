@@ -43,8 +43,6 @@ public class ExamController
         return examService.getAllExams();
     }
 
-
-
     @PostMapping("/smartpaper/exam")
     public Exam addExam(@RequestParam String examName,
                         @RequestParam long startTime,
