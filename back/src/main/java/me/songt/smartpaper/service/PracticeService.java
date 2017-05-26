@@ -1,5 +1,6 @@
 package me.songt.smartpaper.service;
 
+import me.songt.smartpaper.po.PaperEntity;
 import me.songt.smartpaper.vo.paper.Paper;
 import org.springframework.stereotype.Service;
 
@@ -10,5 +11,5 @@ import java.util.List;
  */
 @Service
 public interface PracticeService {
-    List<Paper> findByStudentId(int studentId);
+    List<PaperEntity> findByStudentId(int studentId);
 }

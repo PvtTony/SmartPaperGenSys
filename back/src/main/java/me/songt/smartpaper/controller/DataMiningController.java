@@ -18,7 +18,7 @@ public class DataMiningController
     @Autowired
     private DataMiningService dataMiningService;
 
-    @GetMapping("/smartpaper/exam/{examId}/student{studentId}/mining")
+    @GetMapping("/smartpaper/exam/{examId}/student/{studentId}/mining")
     public AnalysisResult getExamResults(@PathVariable("examId") int examId,
                                          @PathVariable("studentId") int studentId,
                                          @RequestParam(defaultValue = "0.43") double minSupport,
