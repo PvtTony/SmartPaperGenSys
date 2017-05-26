@@ -69,8 +69,8 @@ public class ExamReportServiceImpl implements ExamReportService
 
     private double getExamScore(int studentId, int examId)
     {
-        me.songt.smartpaper.vo.exam.Exam exam = examService.getExamById(examId);
-        double score = getStudentExamTotalScore(exam.getExamPaper().getPaperId(), studentId);
+        Exam exam = examRepository.findOne(examId);
+        double score = getStudentExamTotalScore(exam.getExamPaperId(), studentId);
         return score;
     }
 
