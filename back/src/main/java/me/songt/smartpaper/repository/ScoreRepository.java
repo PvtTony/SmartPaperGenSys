@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Sarah on 2017/5/27.
@@ -14,4 +15,5 @@ import javax.transaction.Transactional;
 public interface ScoreRepository extends CrudRepository<ScoreEntity, Integer>
 {
     ScoreEntity findByStudentIdEqualsAndExamIdEquals(int studentId, int examId);
+    List<ScoreEntity> findByExamId(int examId);
 }

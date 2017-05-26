@@ -5,6 +5,7 @@ import me.songt.smartpaper.repository.*;
 import me.songt.smartpaper.service.*;
 import me.songt.smartpaper.vo.paper.Paper;
 import me.songt.smartpaper.vo.report.StudentExamReport;
+import me.songt.smartpaper.vo.report.TeacherExamReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -96,15 +97,30 @@ public class ExamReportServiceImpl implements ExamReportService
     }
 
     @Override
-    public List<StudentExamReport> getAllReport()
+    public List<TeacherExamReport> getAllReport()
     {
-        List<ScoreEntity> scoreEntities = (List<ScoreEntity>) scoreRepository.findAll();
-        List<StudentExamReport> examReportList = new ArrayList<>();
-        scoreEntities.forEach(scoreEntity -> {
-            StudentExamReport report = getExamReport(scoreEntity.getStudentId(), scoreEntity.getExamId());
-            examReportList.add(report);
+        List<ScoreEntity> allEntityList = (List<ScoreEntity>) scoreRepository.findAll();
+        Set<Integer> examIdSet = new HashSet<>();
+        List<TeacherExamReport> result = new ArrayList<>();
+        allEntityList.forEach(scoreEntity -> {
+            examIdSet.add(scoreEntity.getExamId());
         });
-        return examReportList;
+        examIdSet.forEach(integer -> {
+            List<ScoreEntity> scoreEntities = (List<ScoreEntity>) scoreRepository.findByExamId(integer);
+            List<StudentExamReport> examReportList = new ArrayList<>();
+            scoreEntities.forEach(scoreEntity -> {
+                StudentExamReport report = getExamReport(scoreEntity.getStudentId(), scoreEntity.getExamId());
+                examReportList.add(report);
+            });
+            TeacherExamReport report = new TeacherExamReport();
+            report.setExamId(integer);
+            report.setExamReports(examReportList);
+            result.add(report);
+        });
+        return result;
+
+
+//        return examReportList;
     }
 
 

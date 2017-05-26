@@ -1,6 +1,7 @@
 package me.songt.smartpaper.service;
 
 import me.songt.smartpaper.vo.report.StudentExamReport;
+import me.songt.smartpaper.vo.report.TeacherExamReport;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,5 +20,7 @@ public interface ExamReportService
 
     List<StudentExamReport> getExamReport(int examId);
 
-    List<StudentExamReport> getAllReport();
+//    List<StudentExamReport> getAllReport();
+
+    List<TeacherExamReport> getAllReport();
 }

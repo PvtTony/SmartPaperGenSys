@@ -7,6 +7,7 @@ import me.songt.smartpaper.service.ExamAnswerService;
 import me.songt.smartpaper.service.ExamReportService;
 import me.songt.smartpaper.service.ExamService;
 import me.songt.smartpaper.vo.report.StudentExamReport;
+import me.songt.smartpaper.vo.report.TeacherExamReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import me.songt.smartpaper.vo.exam.Exam;
@@ -119,7 +120,7 @@ public class ExamController
     }
 
     @GetMapping("/smartpaper/exam/report")
-    public List<StudentExamReport> getAllExamReport()
+    public List<TeacherExamReport> getAllExamReport()
     {
         return examReportService.getAllReport();
     }
