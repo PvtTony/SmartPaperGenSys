@@ -24,14 +24,9 @@ public class PracticeController
     @Autowired
     private PaperService paperService;
 
-    @GetMapping("/smartpaper/practise/student/{studentId}")
+    @GetMapping("/smartpaper/practice/student/{studentId}")
     public List<Paper> getPractiseList(@PathVariable("studentId") int studentId)
     {
-        List<Paper> result = new ArrayList<>();
-        List<PaperEntity> paperEntityList = practiceService.findByStudentId(studentId);
-        paperEntityList.forEach(paperEntity -> {
-            result.add(paperService.query(paperEntity.getPaperId()));
-        });
-        return result;
+        return practiceService.findByStudentId(studentId);
     }
 }

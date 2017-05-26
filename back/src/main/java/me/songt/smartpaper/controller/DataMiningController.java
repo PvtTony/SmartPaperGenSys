@@ -21,8 +21,8 @@ public class DataMiningController
     @GetMapping("/smartpaper/exam/{examId}/student/{studentId}/mining")
     public AnalysisResult getExamResults(@PathVariable("examId") int examId,
                                          @PathVariable("studentId") int studentId,
-                                         @RequestParam(defaultValue = "0.43") double minSupport,
-                                         @RequestParam(defaultValue = "0.34") double minConf)
+                                         @RequestParam(defaultValue = "0.1") double minSupport,
+                                         @RequestParam(defaultValue = "0.3") double minConf)
     {
         AnalysisResult result = dataMiningService.getExamMiningResult(minSupport, minConf, examId);
         Paper paper = dataMiningService.addAnalysisReportToPaper(studentId, result, examId);
