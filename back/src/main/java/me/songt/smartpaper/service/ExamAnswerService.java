@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface ExamAnswerService
 {
-    List<ExamResult> addStudentAnswer(int paperId, int studentId, String answerJson);
+    List<ExamResult> addStudentAnswer(int paperId, int studentId, String answerData);
 
     
 

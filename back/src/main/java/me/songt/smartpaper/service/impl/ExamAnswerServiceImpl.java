@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,10 +35,21 @@ public class ExamAnswerServiceImpl implements ExamAnswerService
     private QuestionService questionService;
 
     @Override
-    public List<ExamResult> addStudentAnswer(int paperId, int studentId, String answerJson)
+    public List<ExamResult> addStudentAnswer(int paperId, int studentId, String answerData)
     {
-        Gson gson = new Gson();
-        List<Answer> answers = gson.fromJson(answerJson, new TypeToken<List<Answer>>(){}.getType());
+//        Gson gson = new Gson();
+//        List<Answer> answers = gson.fromJson(answerJson, new TypeToken<List<Answer>>(){}.getType());
+        List<Answer> answers = new ArrayList<>();
+        String[] answerArray = answerData.split(",");
+        for (String answer :
+                answerArray)
+        {
+            String[] data = answer.split("\\|");
+            Answer ans = new Answer();
+            ans.setQuestionId(Integer.parseInt(data[0]));
+            ans.setQuestionAnswer(data[1]);
+            answers.add(ans);
+        }
         for (Answer answer : answers)
         {
             ExamResult examResult = new ExamResult();
