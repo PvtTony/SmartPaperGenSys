@@ -8,10 +8,7 @@ import me.songt.smartpaper.vo.report.StudentExamReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by tony on 2017/5/24.
@@ -97,6 +94,19 @@ public class ExamReportServiceImpl implements ExamReportService
         });
         return examReportList;
     }
+
+    @Override
+    public List<StudentExamReport> getAllReport()
+    {
+        List<ScoreEntity> scoreEntities = (List<ScoreEntity>) scoreRepository.findAll();
+        List<StudentExamReport> examReportList = new ArrayList<>();
+        scoreEntities.forEach(scoreEntity -> {
+            StudentExamReport report = getExamReport(scoreEntity.getStudentId(), scoreEntity.getExamId());
+            examReportList.add(report);
+        });
+        return examReportList;
+    }
+
 
     private double getExamScore(int studentId, int examId)
     {

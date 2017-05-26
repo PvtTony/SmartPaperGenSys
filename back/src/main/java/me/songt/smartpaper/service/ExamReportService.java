@@ -18,4 +18,6 @@ public interface ExamReportService
 //    List<StudentExamReport>
 
     List<StudentExamReport> getExamReport(int examId);
+
+    List<StudentExamReport> getAllReport();
 }

@@ -118,6 +118,11 @@ public class ExamController
         return examReportService.getExamReport(examid);
     }
 
+    @GetMapping("/smartpaper/exam/report")
+    public List<StudentExamReport> getAllExamReport()
+    {
+        return examReportService.getAllReport();
+    }
 
 
 
