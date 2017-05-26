@@ -1,5 +1,6 @@
 package me.songt.smartpaper.service.impl;
 
+import com.sun.tools.jdi.IntegerValueImpl;
 import me.songt.smartpaper.po.*;
 import me.songt.smartpaper.repository.*;
 import me.songt.smartpaper.service.*;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by tony on 2017/5/24.
@@ -44,6 +46,8 @@ public class ExamReportServiceImpl implements ExamReportService
     @Autowired
     private PaperQuestionRepository paperQuestionRepository;
 
+    @Autowired
+    private PaperRepository paperRepository;
 
     @Autowired
     private ScoreRepository scoreRepository;
@@ -53,10 +57,10 @@ public class ExamReportServiceImpl implements ExamReportService
     {
         StudentExamReport report = new StudentExamReport();
         int examPaperId = examRepository.findOne(examId).getExamPaperId();
-        Paper examPaper = paperService.query(examPaperId);
-
+//        Paper examPaper = paperService.query(examPaperId);
+        PaperEntity paper = paperRepository.findOne(examPaperId);
         report.setPaperId(examPaperId);
-        report.setTotalScore(examPaper.getTotalScore());
+        report.setTotalScore(paper.getPaperScore());
         report.setAvgScore(getExamAverage(examId));
         report.setMinScore(getExamScoreMin(examId));
         report.setStudentScore(getExamScore(studentId, examId));
@@ -67,8 +71,15 @@ public class ExamReportServiceImpl implements ExamReportService
     @Override
     public List<StudentExamReport> getTotalReport(int studentId)
     {
-
-        return null;
+//        List<ExamResult> results = examResultRepository.findBystudentId(studentId);
+        List<StudentExamReport> examReportList = new ArrayList<>();
+        List<ExamPerson> personList = examPersonRepository.findByexamStudentId(studentId);
+        personList.forEach(person ->
+        {
+            int examId = person.getExamId();
+            examReportList.add(getExamReport(studentId, examId));
+        });
+        return examReportList;
     }
 
     @Override
