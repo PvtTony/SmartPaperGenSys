@@ -1,12 +1,15 @@
 package me.songt.smartpaper.controller;
 
 import me.songt.smartpaper.po.PaperEntity;
+import me.songt.smartpaper.service.PaperService;
 import me.songt.smartpaper.service.PracticeService;
+import me.songt.smartpaper.vo.paper.Paper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,9 +21,17 @@ public class PracticeController
     @Autowired
     private PracticeService practiceService;
 
+    @Autowired
+    private PaperService paperService;
+
     @GetMapping("/smartpaper/practise/student/{studentId}")
-    public List<PaperEntity> getPractiseList(@PathVariable("studentId") int studentId)
+    public List<Paper> getPractiseList(@PathVariable("studentId") int studentId)
     {
-        return practiceService.findByStudentId(studentId);
+        List<Paper> result = new ArrayList<>();
+        List<PaperEntity> paperEntityList = practiceService.findByStudentId(studentId);
+        paperEntityList.forEach(paperEntity -> {
+            result.add(paperService.query(paperEntity.getPaperId()));
+        });
+        return result;
     }
 }
