@@ -1,5 +1,6 @@
 package me.songt.smartpaper.vo.report;
 
+import me.songt.smartpaper.po.Student;
 import me.songt.smartpaper.vo.paper.Paper;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class StudentExamReport
 {
     private int studentId;
+    private Student student;
     private double minScore;
     private double avgScore;
     private double studentScore;
@@ -89,5 +91,15 @@ public class StudentExamReport
     public void setExamPaper(Paper examPaper)
     {
         this.examPaper = examPaper;
+    }
+
+    public Student getStudent()
+    {
+        return student;
+    }
+
+    public void setStudent(Student student)
+    {
+        this.student = student;
     }
 }

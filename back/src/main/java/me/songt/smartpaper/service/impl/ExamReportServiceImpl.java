@@ -51,6 +51,9 @@ public class ExamReportServiceImpl implements ExamReportService
     @Autowired
     private ScoreRepository scoreRepository;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
     @Override
     public StudentExamReport getExamReport(int studentId, int examId)
     {
@@ -65,6 +68,7 @@ public class ExamReportServiceImpl implements ExamReportService
         report.setStudentScore(getExamScore(studentId, examId));
         report.setStudentId(studentId);
         report.setExamPaper(examPaper);
+        report.setStudent(studentRepository.findOne(studentId));
         return report;
     }
 
