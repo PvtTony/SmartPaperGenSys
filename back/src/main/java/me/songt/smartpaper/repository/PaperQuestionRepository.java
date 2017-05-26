@@ -18,4 +18,6 @@ public interface PaperQuestionRepository extends CrudRepository<PaperQuestionEnt
     int deleteByPaperId(int paperId);
     //根据试卷id查找题目
     List<PaperQuestionEntity> findByPaperId(int paperId);
+
+    PaperQuestionEntity findByPaperIdEqualsAndPaperQuestionIdEquals(int paperId, int questionId);
 }

@@ -4,7 +4,9 @@ import me.songt.smartpaper.po.ExamResult;
 //import me.songt.smartpaper.po.ExamResult;
 import me.songt.smartpaper.po.Student;
 import me.songt.smartpaper.service.ExamAnswerService;
+import me.songt.smartpaper.service.ExamReportService;
 import me.songt.smartpaper.service.ExamService;
+import me.songt.smartpaper.vo.report.Report;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,9 @@ public class ExamController
 
     @Autowired
     private ExamAnswerService examAnswerService;
+
+    @Autowired
+    private ExamReportService examReportService;
 
     @GetMapping("/smartpaper/exam/studentId/{studentId}")
     public List<Exam> findExamByStudentId(@PathVariable("studentId") int studentId)
@@ -97,6 +102,12 @@ public class ExamController
                                  @PathVariable("studentId") int studentId)
     {
         examService.removeExamPerson(examId, studentId);
+    }
+
+    @GetMapping("/smartpaper/exam/{examId}/student/{studentId}/report")
+    public Report getExamReport(@PathVariable("studentId") int studentId, @PathVariable("examId") int examId)
+    {
+        return examReportService.getExamReport(studentId, examId);
     }
 
 

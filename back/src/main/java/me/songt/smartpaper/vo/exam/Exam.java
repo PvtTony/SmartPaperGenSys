@@ -12,6 +12,7 @@ import java.util.List;
 public class Exam
 {
     private int examId;
+    private String examName;
     private Timestamp examStartTime;
     private Timestamp examEndTime;
     private Paper examPaper;
@@ -29,6 +30,16 @@ public class Exam
     public void setExamId(int examId)
     {
         this.examId = examId;
+    }
+
+    public String getExamName()
+    {
+        return examName;
+    }
+
+    public void setExamName(String examName)
+    {
+        this.examName = examName;
     }
 
     public Timestamp getExamStartTime()

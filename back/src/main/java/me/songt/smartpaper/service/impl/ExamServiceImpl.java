@@ -64,6 +64,7 @@ public class ExamServiceImpl implements ExamService
             exam.setExamEndTime(poExam.getExamEndtime());
             exam.setExamPaper(paperService.query(poExam.getExamPaperId()));
             exam.setExamStudentList(getExamPersonList(examId));
+            exam.setExamName(poExam.getExamName());
             exams.add(exam);
         }
         return exams;
@@ -83,6 +84,7 @@ public class ExamServiceImpl implements ExamService
             examItem.setExamStartTime(exam.getExamStartTime());
             examItem.setExamEndTime(exam.getExamEndtime());
             examItem.setExamStudentList(getExamPersonList(exam.getExamId()));
+            examItem.setExamName(exam.getExamName());
             exams.add(examItem);
         }
         return exams;
