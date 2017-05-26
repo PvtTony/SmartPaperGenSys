@@ -47,7 +47,7 @@ public class WrongAnswerServiceImpl implements WrongAnswerService
             wrongAnswerInfos.add(new WrongAnswerInfo(wrongAnswer.getRecordId(),
                     question,
                     wrongAnswer.getStudentId(),
-                    wrongAnswer.getQuestionWrongAnswer()))
+                    wrongAnswer.getQuestionWrongAnswer()));
         });
         return wrongAnswerInfos;
     }
