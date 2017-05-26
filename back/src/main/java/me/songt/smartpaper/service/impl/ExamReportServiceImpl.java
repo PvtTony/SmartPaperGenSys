@@ -63,7 +63,15 @@ public class ExamReportServiceImpl implements ExamReportService
         report.setAvgScore(getExamAverage(examId));
         report.setMinScore(getExamScoreMin(examId));
         report.setExamScoreReport(getStudentExamScoreList(studentId));
+        report.setScore(getExamScore(studentId, examId));
         return report;
+    }
+
+    private double getExamScore(int studentId, int examId)
+    {
+        me.songt.smartpaper.vo.exam.Exam exam = examService.getExamById(examId);
+        double score = getStudentExamTotalScore(exam.getExamPaper().getPaperId(), studentId);
+        return score;
     }
 
     private List<LevelReport> getStudentExamScoreList(int studentId)

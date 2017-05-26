@@ -15,6 +15,7 @@ public class Report
 
     private double minScore;
     private double avgScore;
+    private double score;
 
     public Report()
     {
@@ -68,5 +69,15 @@ public class Report
     public void setAvgScore(double avgScore)
     {
         this.avgScore = avgScore;
+    }
+
+    public double getScore()
+    {
+        return score;
+    }
+
+    public void setScore(double score)
+    {
+        this.score = score;
     }
 }
