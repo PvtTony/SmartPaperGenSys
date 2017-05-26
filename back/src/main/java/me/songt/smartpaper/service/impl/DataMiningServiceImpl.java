@@ -1,17 +1,22 @@
 package me.songt.smartpaper.service.impl;
 
 import apriori4j.*;
-import me.songt.smartpaper.po.ExamPerson;
-import me.songt.smartpaper.po.ExamResult;
+import me.songt.smartpaper.po.*;
 import me.songt.smartpaper.repository.ExamPersonRepository;
 import me.songt.smartpaper.repository.ExamRepository;
 import me.songt.smartpaper.repository.ExamResultRepository;
+import me.songt.smartpaper.repository.WrongAnswerRepository;
 import me.songt.smartpaper.service.DataMiningService;
+import me.songt.smartpaper.service.PaperService;
+import me.songt.smartpaper.service.QuestionService;
+import me.songt.smartpaper.service.WrongAnswerService;
 import me.songt.smartpaper.vo.mining.DataItemSet;
 import me.songt.smartpaper.vo.mining.DataMiningResult;
+import me.songt.smartpaper.vo.question.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,22 +28,25 @@ import java.util.*;
 public class DataMiningServiceImpl implements DataMiningService
 {
 
+    private final byte CORRECT_ANSWER_FLAG = new Integer(1).byteValue();
     private Logger logger = LoggerFactory.getLogger(DataMiningServiceImpl.class);
     @Autowired
     private ExamResultRepository examResultRepository;
-
     @Autowired
     private ExamRepository examRepository;
-
     @Autowired
     private ExamPersonRepository examPersonRepository;
-
-    private final byte CORRECT_ANSWER_FLAG = new Integer(1).byteValue();
+    @Autowired
+    private PaperService paperService;
+    @Autowired
+    private QuestionService questionService;
 
     @Override
     public AnalysisResult getExamMiningResult(double minSupport, double minConfident, int examId)
     {
-        int paperId = examRepository.findOne(examId).getExamPaperId();
+        Exam exam = examRepository.findOne(examId);
+
+        int paperId = exam.getExamPaperId();
 //        List<ExamResult> examResults = examResultRepository.findByPaperId(paperId);
 
         List<ExamPerson> examPeople = examPersonRepository.findByexamId(examId);
@@ -62,15 +70,62 @@ public class DataMiningServiceImpl implements DataMiningService
             apriTransaction.add(new Transaction(dataSet));
         }
 
+
         AprioriAlgorithm algorithm = new AprioriAlgorithm(minSupport, minConfident);
         try
         {
             AnalysisResult result = algorithm.analyze(apriTransaction);
+
+            Set<Integer> questionSets = new HashSet<>();
+            Set<Integer> questionTypes = new HashSet<>();
+            List<PaperQuestionEntity> questionEntities = new ArrayList<>();
+            List<PaperQuestionTypeEntity> typeEntities = new ArrayList<>();
+
+            PaperEntity paperEntity = new PaperEntity();
+            paperEntity.setPaperIsShare(new Integer(1).byteValue());
+            paperEntity.setPaperSubjectId(1);
+            paperEntity.setPaperTitle("考试： " + exam.getExamName() + " 附加测试");
+            paperEntity.setPaperUserId(1);
+
             for (AssociationRule rule :
                     result.getAssociationRules())
             {
-                logger.info(rule.getLeftHandSide() + " --> " + rule.getRightHandSide() + " : " + rule.getConfidence() );
+                ItemSet leftSet = rule.getLeftHandSide();
+                ItemSet rightSet = rule.getRightHandSide();
+                String[] left = leftSet.toArray(new String[leftSet.size()]);
+                String[] right = rightSet.toArray(new String[rightSet.size()]);
+
+                for (String leftItem : left)
+                {
+                    questionSets.add(Integer.parseInt(leftItem));
+                }
+
+                for (String rightItem : right)
+                {
+                    questionSets.add(Integer.parseInt(rightItem));
+                }
+                logger.info(rule.getLeftHandSide() + " --> " + rule.getRightHandSide() + " : " + rule.getConfidence());
             }
+
+            for (Integer questionId :
+                    questionSets)
+            {
+                PaperQuestionEntity entity = new PaperQuestionEntity();
+                Question question = questionService.query(questionId);
+//                question.getQuestionSubjectId()
+                entity.setPaperQuestionId(questionId);
+                questionEntities.add(entity);
+                questionTypes.add(question.getQuestionTypeId());
+            }
+
+            for (Integer type :
+                    questionTypes)
+            {
+                PaperQuestionTypeEntity typeEntity = new PaperQuestionTypeEntity();
+                typeEntity.setPaperTypeId(type);
+                typeEntities.add(typeEntity);
+            }
+            paperService.addPaper(paperEntity, typeEntities, questionEntities);
             return result;
 
 
@@ -160,6 +215,9 @@ public class DataMiningServiceImpl implements DataMiningService
         return null;
     }
 
+
+
+
     /*private double getSupport(List<ExamResult> examResults, int[] questionIds, int studentSize)
     {
         int questionLength = questionIds.length;
@@ -174,7 +232,6 @@ public class DataMiningServiceImpl implements DataMiningService
 
         return Double.parseDouble(null);
     }*/
-
 
 
     //Combination
@@ -192,9 +249,9 @@ public class DataMiningServiceImpl implements DataMiningService
         return combinationList;
     }
 
+
     private Integer[] get(Integer[] questions, int C)
     {
-//        List<Integer[]> doubles = new ArrayList<>();
         List<Integer> idList = new ArrayList<>();
         int i = 0;
         int k;
@@ -206,8 +263,6 @@ public class DataMiningServiceImpl implements DataMiningService
             }
             i++;
         }
-//        doubles.add(idList.toArray(new Integer[idList.size()]));
-//        return doubles.toArray(new Integer[doubles.size()]);
         return idList.toArray(new Integer[idList.size()]);
     }
 
@@ -215,5 +270,4 @@ public class DataMiningServiceImpl implements DataMiningService
     {
         return (N + (N & (-N))) | ((N ^ (N + (N & (-N)))) / (N & (-N))) >> 2;
     }
-
 }

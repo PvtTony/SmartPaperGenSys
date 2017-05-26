@@ -54,8 +54,8 @@ public class ExamController
         return examService.addExam(examName, startTime, endTime, paperId);
     }
 
-    @PostMapping("/smartpaper/exam/studentId/{studentId}")
-    public List<ExamResult> submitAnswer(@RequestParam int paperId,
+    @PostMapping("/smartpaper/exam/studentId/{studentId}/{paperId}")
+    public List<ExamResult> submitAnswer(@PathVariable("paperId") int paperId,
                                          @PathVariable("studentId") int studentId,
                                          @RequestParam String answerJson)
     {

@@ -11,4 +11,6 @@ import java.util.List;
 public interface DataMiningService
 {
     AnalysisResult getExamMiningResult(double minSupport, double minConfident, int examId);
+
+//    public void addWrongAnswer(AnalysisResult result);
 }
