@@ -56,7 +56,7 @@ public class ExamReportServiceImpl implements ExamReportService
     {
         StudentExamReport report = new StudentExamReport();
         int examPaperId = examRepository.findOne(examId).getExamPaperId();
-//        Paper examPaper = paperService.query(examPaperId);
+        Paper examPaper = paperService.query(examPaperId);
         PaperEntity paper = paperRepository.findOne(examPaperId);
         report.setPaperId(examPaperId);
         report.setTotalScore(paper.getPaperScore());
@@ -64,6 +64,7 @@ public class ExamReportServiceImpl implements ExamReportService
         report.setMinScore(getExamScoreMin(examId));
         report.setStudentScore(getExamScore(studentId, examId));
         report.setStudentId(studentId);
+        report.setExamPaper(examPaper);
         return report;
     }
 

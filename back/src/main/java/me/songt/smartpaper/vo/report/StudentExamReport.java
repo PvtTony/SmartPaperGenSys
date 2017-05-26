@@ -15,6 +15,7 @@ public class StudentExamReport
     private double studentScore;
     private double totalScore;
     private int paperId;
+    private Paper examPaper;
 
     public StudentExamReport()
     {
@@ -78,5 +79,15 @@ public class StudentExamReport
     public void setPaperId(int paperId)
     {
         this.paperId = paperId;
+    }
+
+    public Paper getExamPaper()
+    {
+        return examPaper;
+    }
+
+    public void setExamPaper(Paper examPaper)
+    {
+        this.examPaper = examPaper;
     }
 }
