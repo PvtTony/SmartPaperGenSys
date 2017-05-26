@@ -8,6 +8,7 @@ import me.songt.smartpaper.vo.report.StudentExamReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,6 +71,18 @@ public class ExamReportServiceImpl implements ExamReportService
         return null;
     }
 
+    @Override
+    public List<StudentExamReport> getExamReport(int examId)
+    {
+        List<ExamPerson> examPeople = examPersonRepository.findByexamId(examId);
+        List<StudentExamReport> examReportList = new ArrayList<>();
+        examPeople.forEach(examPerson -> {
+            int studentId = examPerson.getExamStudentId();
+            examReportList.add(getExamReport(studentId, examId));
+        });
+        return examReportList;
+    }
+
     private double getExamScore(int studentId, int examId)
     {
         double score = getStudentExamTotalScore(examId, studentId);
@@ -99,15 +112,15 @@ public class ExamReportServiceImpl implements ExamReportService
 
     private double getExamAverage(int examId)
     {
-        Exam exam = examRepository.findOne(examId);
-        int paperId = exam.getExamPaperId();
+//        Exam exam = examRepository.findOne(examId);
+//        int paperId = exam.getExamPaperId();
         double totalSum = 0;
         List<ExamPerson> personList = examPersonRepository.findByexamId(examId);
         int size = personList.size();
         for (ExamPerson person : personList)
         {
             int studentId = person.getExamStudentId();
-            totalSum += getStudentExamTotalScore(paperId, studentId);
+            totalSum += getStudentExamTotalScore(examId, studentId);
         }
 
         return totalSum / size;

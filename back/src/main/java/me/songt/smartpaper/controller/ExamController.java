@@ -106,6 +106,11 @@ public class ExamController
         return examReportService.getExamReport(studentId, examId);
     }
 
+    @GetMapping("/smartpaper/exam/{examId}/report")
+    public List<StudentExamReport> getExamReport(@PathVariable("examId") int examid)
+    {
+        return examReportService.getExamReport(examid);
+    }
 
 
 

@@ -14,6 +14,7 @@ public class PracticeEntity {
 
     @Id
     @Column(name = "pracatice_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getPracaticeId() {
         return pracaticeId;
     }
