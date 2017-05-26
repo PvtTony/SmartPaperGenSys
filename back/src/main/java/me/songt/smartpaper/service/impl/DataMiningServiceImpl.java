@@ -2,16 +2,14 @@ package me.songt.smartpaper.service.impl;
 
 import apriori4j.*;
 import me.songt.smartpaper.po.*;
-import me.songt.smartpaper.repository.ExamPersonRepository;
-import me.songt.smartpaper.repository.ExamRepository;
-import me.songt.smartpaper.repository.ExamResultRepository;
-import me.songt.smartpaper.repository.WrongAnswerRepository;
+import me.songt.smartpaper.repository.*;
 import me.songt.smartpaper.service.DataMiningService;
 import me.songt.smartpaper.service.PaperService;
 import me.songt.smartpaper.service.QuestionService;
 import me.songt.smartpaper.service.WrongAnswerService;
 import me.songt.smartpaper.vo.mining.DataItemSet;
 import me.songt.smartpaper.vo.mining.DataMiningResult;
+import me.songt.smartpaper.vo.paper.Paper;
 import me.songt.smartpaper.vo.question.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +38,8 @@ public class DataMiningServiceImpl implements DataMiningService
     private PaperService paperService;
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private PracticeRepository practiceRepository;
 
     @Override
     public AnalysisResult getExamMiningResult(double minSupport, double minConfident, int examId)
@@ -74,60 +74,7 @@ public class DataMiningServiceImpl implements DataMiningService
         try
         {
             AnalysisResult result = algorithm.analyze(apriTransaction);
-
-            Set<Integer> questionSets = new HashSet<>();
-            Set<Integer> questionTypes = new HashSet<>();
-            List<PaperQuestionEntity> questionEntities = new ArrayList<>();
-            List<PaperQuestionTypeEntity> typeEntities = new ArrayList<>();
-
-            PaperEntity paperEntity = new PaperEntity();
-            paperEntity.setPaperIsShare(new Integer(0).byteValue());
-            paperEntity.setPaperSubjectId(1);
-            paperEntity.setPaperTitle("考试： " + exam.getExamName() + " 加强测试");
-            paperEntity.setPaperUserId(1);
-
-            for (AssociationRule rule :
-                    result.getAssociationRules())
-            {
-                ItemSet leftSet = rule.getLeftHandSide();
-                ItemSet rightSet = rule.getRightHandSide();
-                String[] left = leftSet.toArray(new String[leftSet.size()]);
-                String[] right = rightSet.toArray(new String[rightSet.size()]);
-
-                for (String leftItem : left)
-                {
-                    questionSets.add(Integer.parseInt(leftItem));
-                }
-
-                for (String rightItem : right)
-                {
-                    questionSets.add(Integer.parseInt(rightItem));
-                }
-                logger.info(rule.getLeftHandSide() + " --> " + rule.getRightHandSide() + " : " + rule.getConfidence());
-            }
-
-            for (Integer questionId :
-                    questionSets)
-            {
-                PaperQuestionEntity entity = new PaperQuestionEntity();
-                Question question = questionService.query(questionId);
-//                question.getQuestionSubjectId()
-                entity.setPaperQuestionId(questionId);
-                questionEntities.add(entity);
-                questionTypes.add(question.getQuestionTypeId());
-            }
-
-            for (Integer type :
-                    questionTypes)
-            {
-                PaperQuestionTypeEntity typeEntity = new PaperQuestionTypeEntity();
-                typeEntity.setPaperTypeId(type);
-                typeEntities.add(typeEntity);
-            }
-            paperService.addPaper(paperEntity, typeEntities, questionEntities);
             return result;
-
-
         } catch (AprioriTimeoutException e)
         {
             e.printStackTrace();
@@ -213,6 +160,82 @@ public class DataMiningServiceImpl implements DataMiningService
         return null;*/
         return null;
     }
+
+    @Override
+    public Paper addAnalysisReportToPaper(int studentId, AnalysisResult result, int examId)
+    {
+        Exam exam = examRepository.findOne(examId);
+        Set<Integer> questionSets = new HashSet<>();
+        Set<Integer> questionTypes = new HashSet<>();
+        List<PaperQuestionEntity> questionEntities = new ArrayList<>();
+        List<PaperQuestionTypeEntity> typeEntities = new ArrayList<>();
+
+        PaperEntity paperEntity = new PaperEntity();
+        paperEntity.setPaperIsShare(new Integer(0).byteValue());
+        paperEntity.setPaperSubjectId(1);
+        paperEntity.setPaperTitle("考试： " + exam.getExamName() + " 学生：" + studentId + " 加强测试");
+        paperEntity.setPaperUserId(1);
+
+        List<ExamResult> examResultList = examResultRepository.findByPaperIdEqualsAndStudentIdEquals(exam.getExamPaperId(), studentId);
+        for (AssociationRule rule :
+                result.getAssociationRules())
+        {
+            ItemSet leftSet = rule.getLeftHandSide();
+            ItemSet rightSet = rule.getRightHandSide();
+            String[] left = leftSet.toArray(new String[leftSet.size()]);
+            String[] right = rightSet.toArray(new String[rightSet.size()]);
+
+            for (String leftItem : left)
+            {
+                questionSets.add(Integer.parseInt(leftItem));
+            }
+
+            for (String rightItem : right)
+            {
+                questionSets.add(Integer.parseInt(rightItem));
+            }
+            logger.info(rule.getLeftHandSide() + " --> " + rule.getRightHandSide() + " : " + rule.getConfidence());
+        }
+
+        examResultList.forEach(examResult ->
+        {
+            boolean isCorrect = examResult.getQuestionIsCorrect() == CORRECT_ANSWER_FLAG;
+            int questionId = examResult.getQuestionId();
+            if(isCorrect && questionSets.contains(questionId))
+            {
+                questionSets.remove(questionId);
+            }
+        });
+
+        for (Integer questionId :
+                questionSets)
+        {
+            PaperQuestionEntity entity = new PaperQuestionEntity();
+            Question question = questionService.query(questionId);
+            entity.setPaperQuestionId(questionId);
+            questionEntities.add(entity);
+            questionTypes.add(question.getQuestionTypeId());
+        }
+
+        for (Integer type :
+                questionTypes)
+        {
+            PaperQuestionTypeEntity typeEntity = new PaperQuestionTypeEntity();
+            typeEntity.setPaperTypeId(type);
+            typeEntities.add(typeEntity);
+        }
+        return paperService.addPaper(paperEntity, typeEntities, questionEntities);
+    }
+
+    @Override
+    public void addPaperToPractice(Paper paper, int studentId)
+    {
+        PracticeEntity entity = new PracticeEntity();
+        entity.setPaperId(paper.getPaperId());
+        entity.setStudentId(studentId);
+        practiceRepository.save(entity);
+    }
+
 
 
 
