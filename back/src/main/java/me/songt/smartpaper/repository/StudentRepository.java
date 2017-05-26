@@ -14,4 +14,6 @@ import javax.transaction.Transactional;
 public interface StudentRepository extends CrudRepository<Student, Integer>
 {
     Student findBystudentUserId(int userId);
+
+//    Student findByS
 }

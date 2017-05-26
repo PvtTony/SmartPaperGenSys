@@ -14,6 +14,9 @@ public class UserInfo
     private int userType;
     private Object userObject;
 
+    public static final int TYPE_TEACHER = 2;
+    public static final int TYPE_STUDENT = 1;
+
     public UserInfo()
     {
     }
@@ -28,5 +31,35 @@ public class UserInfo
         this.username = username;
     }
 
+
+    public int getUserId()
+    {
+        return userId;
+    }
+
+    public void setUserId(int userId)
+    {
+        this.userId = userId;
+    }
+
+    public int getUserType()
+    {
+        return userType;
+    }
+
+    public void setUserType(int userType)
+    {
+        this.userType = userType;
+    }
+
+    public Object getUserObject()
+    {
+        return userObject;
+    }
+
+    public void setUserObject(Object userObject)
+    {
+        this.userObject = userObject;
+    }
 
 }
