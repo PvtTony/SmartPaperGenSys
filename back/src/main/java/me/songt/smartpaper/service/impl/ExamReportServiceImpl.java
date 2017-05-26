@@ -62,7 +62,8 @@ public class ExamReportServiceImpl implements ExamReportService
         report.setReportPaper(paperService.query(examPaperId));
         report.setAvgScore(getExamAverage(examId));
         report.setMinScore(getExamScoreMin(examId));
-        return null;
+        report.setExamScoreReport(getStudentExamScoreList(studentId));
+        return report;
     }
 
     private List<LevelReport> getStudentExamScoreList(int studentId)
@@ -83,7 +84,7 @@ public class ExamReportServiceImpl implements ExamReportService
 
     private double getStudentExamTotalScore(int paperId, int studentId)
     {
-        List<ExamResult> examResults = examResultRepository.findBystudentId(studentId);
+        List<ExamResult> examResults = examResultRepository.findByPaperIdEqualsAndStudentIdEquals(paperId, studentId);
         double scoreSum = 0;
         for (ExamResult result :
                 examResults)

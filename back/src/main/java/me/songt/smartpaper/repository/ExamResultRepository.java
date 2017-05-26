@@ -18,7 +18,7 @@ public interface ExamResultRepository extends CrudRepository<ExamResult, Integer
 
 //    ExamResult findBypaperIdAndquestionIdAndstudentId(int paperId, int questionId, int studentId);
 
-    List<ExamResult> findByPaperId(int paperId);
+//    List<ExamResult> findByPaperIdEqualsAndStudentIdEquals(int paperId, int studentId);
 
     List<ExamResult> findByPaperIdEqualsAndStudentIdEquals(int paperId, int studentId);
 
