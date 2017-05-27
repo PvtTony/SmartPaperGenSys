@@ -42,7 +42,7 @@ public class ExamServiceImpl implements ExamService
         List<ExamPerson> examPeople = examPersonRepository.findByexamStudentId(studentId);
 
 //        long currentTime = System.currentTimeMillis();
-        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+//        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
         for (ExamPerson person : examPeople)
         {
@@ -50,10 +50,10 @@ public class ExamServiceImpl implements ExamService
             int examId = person.getExamId();
             me.songt.smartpaper.po.Exam poExam = examRepository.findOne(examId);
             exam.setExamId(poExam.getExamId());
-            if (poExam.getExamEndtime().before(currentTime))
+            /*if (poExam.getExamEndtime().before(currentTime))
             {
                 continue;
-            }
+            }*/
             exam.setExamStartTime(poExam.getExamStartTime());
             exam.setExamEndTime(poExam.getExamEndtime());
             exam.setExamPaper(paperService.query(poExam.getExamPaperId()));
