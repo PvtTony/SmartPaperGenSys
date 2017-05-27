@@ -48,7 +48,10 @@ public class ExamController
                         @RequestParam long endTime,
                         @RequestParam int paperId)
     {
-        return examService.addExam(examName, startTime, endTime, paperId);
+        Exam exam = examService.addExam(examName, startTime, endTime, paperId);
+        int examid = exam.getExamId();
+        examService.addExamPerson(examid, 1);
+        return exam;
     }
 
     @PostMapping("/smartpaper/exam/studentId/{studentId}/{paperId}")
