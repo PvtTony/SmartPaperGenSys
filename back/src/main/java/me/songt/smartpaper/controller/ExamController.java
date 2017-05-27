@@ -8,6 +8,8 @@ import me.songt.smartpaper.service.ExamReportService;
 import me.songt.smartpaper.service.ExamService;
 import me.songt.smartpaper.vo.report.StudentExamReport;
 import me.songt.smartpaper.vo.report.TeacherExamReport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import me.songt.smartpaper.vo.exam.Exam;
@@ -20,6 +22,7 @@ import java.util.List;
 @RestController
 public class ExamController
 {
+    private Logger logger = LoggerFactory.getLogger(ExamController.class);
 
     @Autowired
     private ExamService examService;
@@ -49,8 +52,9 @@ public class ExamController
                         @RequestParam int paperId)
     {
         Exam exam = examService.addExam(examName, startTime, endTime, paperId);
-        int examid = exam.getExamId();
-        examService.addExamPerson(examid, 1);
+        int examId = exam.getExamId();
+        logger.info("New ExamId: " + examId);
+        examService.addExamPerson(examId, 1);
         return exam;
     }
 
